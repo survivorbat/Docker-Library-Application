@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  webserver:
+    volumes:
+      - ./webserver/sites-enabled:/etc/nginx/sites-enabled
+  database:
+    ports:
+      - "3306:3306"

@@ -1,0 +1,63 @@
+version: '3'
+
+networks:
+  app: ~
+  sessions: ~
+  data: ~
+
+volumes:
+  app: ~
+  database: ~
+  logs: ~
+
+services:
+  php:
+    build:
+      context: php
+    volumes:
+      - ../src:/srv/html
+    working_dir: /srv/html
+    networks:
+      - app
+      - sessions
+      - data
+    restart: always
+    expose:
+      - 9000
+    environment:
+      - DATABASE_USER=tweet
+      - DATABASE_HOST=database
+      - DATABASE_PASSWORD=tweettweet
+      - DATABASE_DATABASE=tweets
+  webserver:
+    build:
+      context: webserver
+    volumes:
+      - ../src:/srv/html
+      - ./webserver/sites-enabled/example.com.conf:/etc/nginx/sites-enabled/example.com.conf
+    working_dir: /srv/html
+    restart: always
+    ports:
+      - "80:8080"
+      - "433:8081"
+    networks:
+      - app
+  sessions:
+    image: redis:5.0.3
+    networks:
+      - sessions
+    restart: always
+    volumes:
+      - logs:/var/log/redis
+  database:
+    image: mysql:5.7
+    networks:
+      - data
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tweets
+      - MYSQL_USER=tweet
+      - MYSQL_PASSWORD=tweettweet
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    restart: always

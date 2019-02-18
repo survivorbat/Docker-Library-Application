@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Output to stderr
+exec 1>&2
+
+echo ======== Running pre-commit hooks ========
+
+PHPFILES=`git diff --name-only --diff-filter=d HEAD | grep \.php`
+if [[ "${PHPFILES}" == "" ]]; then
+    echo - No PHP files were found in the new changes, skipping php-cs-fixer and phpstan
+    exit 0
+fi
+
+echo - Running php-cs-fixer
+git diff --name-only --cached --diff-filter=d | grep \.php | while read filename ; do ./src/php-cs-fixer fix $filename && echo $filename && git add $filename; done;
+
+echo - Running phpstan
+git diff --name-only --cached --diff-filter=d | grep \.php | while read filename ; do ./src/vendor/phpstan/phpstan/bin/phpstan analyze --level=5 -a autoload.php $filename; done;
+
