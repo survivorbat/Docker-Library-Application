@@ -25,10 +25,10 @@ services:
     expose:
       - 9000
     environment:
-      - DATABASE_USER=tweet
-      - DATABASE_HOST=database
-      - DATABASE_PASSWORD=tweettweet
-      - DATABASE_DATABASE=tweets
+      - MYSQL_DATABASE=library_application
+      - MYSQL_USER=050a69672299fabf7c1f531ff0468c7e050a69672299fabf7c1f531ff0468c7e
+      - MYSQL_PASSWORD=0c680e1cbdca4249be9677fd12d579febf41afcf0c680e1cbdca4249be9677fd12d579febf41afcf
+      - MYSQL_HOST=database
   webserver:
     build:
       context: webserver
@@ -56,8 +56,8 @@ services:
     volumes:
       - database:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=tweets
-      - MYSQL_USER=tweet
-      - MYSQL_PASSWORD=tweettweet
+      - MYSQL_DATABASE=library_application
+      - MYSQL_USER=050a69672299fabf7c1f531ff0468c7e050a69672299fabf7c1f531ff0468c7e
+      - MYSQL_PASSWORD=0c680e1cbdca4249be9677fd12d579febf41afcf0c680e1cbdca4249be9677fd12d579febf41afcf
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
     restart: always
