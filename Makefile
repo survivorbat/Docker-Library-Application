@@ -1,5 +1,5 @@
 dev.up:
-	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up -d
+	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up -d --scale php=10
 
 dev.down:
 	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml down
@@ -33,7 +33,7 @@ symfony.fixtures.load:
 	docker-compose -f docker/docker-compose.yml exec --user=1000 php bin/console doctrine:fixtures:load
 
 prod.up:
-	docker-compose -f docker/docker-compose.yml up -d
+	docker-compose -f docker/docker-compose.yml up -d --scale php=10
 	make composer.install
 
 prod.down:

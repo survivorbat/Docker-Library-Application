@@ -25,10 +25,10 @@ services:
     expose:
       - 9000
     environment:
-      - MYSQL_DATABASE=library_application
-      - MYSQL_USER=050a69672299fabf7c1f531ff0468c7e050a69672299fabf7c1f531ff0468c7e
-      - MYSQL_PASSWORD=0c680e1cbdca4249be9677fd12d579febf41afcf0c680e1cbdca4249be9677fd12d579febf41afcf
-      - MYSQL_HOST=database
+      - DATABASE_DATABASE=library_application
+      - DATABASE_USER=050a69672299fabf7c1f531ff0468c7e050a69672299fabf7c1f531ff0468c7e
+      - DATABASE_PASSWORD=0c680e1cbdca4249be9677fd12d579febf41afcf0c680e1cbdca4249be9677fd12d579febf41afcf
+      - DATABASE_HOST=database
   webserver:
     build:
       context: webserver
