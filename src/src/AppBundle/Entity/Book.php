@@ -16,6 +16,8 @@ class Book
     private $author;
     /** @var Genre[]|array $genres */
     private $genres;
+    /** @var BookExemplar|array $bookExemplars */
+    private $bookExemplars;
 
     /**
      * Book constructor.
@@ -23,7 +25,7 @@ class Book
     public function __construct()
     {
         $this->genres = new ArrayCollection();
-        $this->bookExamplars = new ArrayCollection();
+        $this->bookExemplars = new ArrayCollection();
     }
 
     /**
@@ -103,6 +105,24 @@ class Book
     public function setGenres(array $genres)
     {
         $this->genres = $genres;
+        return $this;
+    }
+
+    /**
+     * @return BookExemplar|array
+     */
+    public function getBookExemplars(): array
+    {
+        return $this->bookExemplars;
+    }
+
+    /**
+     * @param BookExemplar|array $bookExemplars
+     * @return Book
+     */
+    public function setBookExamplars($bookExemplars)
+    {
+        $this->bookExemplars = $bookExemplars;
         return $this;
     }
 }
