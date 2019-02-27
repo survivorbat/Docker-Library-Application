@@ -8,6 +8,8 @@ class Book
 {
     /** @var string $id */
     private $id = '';
+    /** @var string $isbn */
+    private $isbn;
     /** @var string $title */
     private $title = '';
     /** @var string $description*/
