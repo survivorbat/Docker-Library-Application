@@ -1,0 +1,41 @@
+{% extends '@App/base.html.twig' %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">hed</div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for book in books %}
+                                <tr>
+                                    <td>
+                                        {{- book.title -}}
+                                    </td>
+                                    <td>
+                                        {{- book.description -}}
+                                    </td>
+                                    <td>
+                                        {{- book.author.name -}}
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">
+                                        Geen boeken gevonden
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

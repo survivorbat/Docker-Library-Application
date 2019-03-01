@@ -1,0 +1,43 @@
+AppBundle\Entity\Location:
+  type: entity
+  id:
+    id:
+      type: string
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    name:
+      type: string
+    address:
+      type: string
+    city:
+      type: string
+    postalCode:
+      type: string
+    openingDate:
+      type: datetime
+    createdAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updatedAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  oneToMany:
+    bookExemplars:
+      targetEntity: AppBundle\Entity\BookExemplar
+      mappedBy: location
+      inversedBy: location
+    employees:
+      targetEntity: AppBundle\Entity\Employee
+      inversedBy: location
+      mappedBy: location
+    members:
+      targetEntity: AppBundle\Entity\Member
+      mappedBy: primaryLocation

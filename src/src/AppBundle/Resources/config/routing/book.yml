@@ -1,0 +1,4 @@
+app_book_index:
+  path: /
+  defaults:
+    _controller: AppBundle:Book:index

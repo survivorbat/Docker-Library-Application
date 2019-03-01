@@ -1,2 +1,7 @@
-app_home_index:
+home:
+  prefix: /
   resource: routing/home.yml
+
+book:
+  prefix: /book
+  resource: routing/book.yml

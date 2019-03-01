@@ -1,0 +1,31 @@
+AppBundle\Entity\Member:
+  type: entity
+  id:
+    id:
+      type: string
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    name:
+      type: string
+    createdAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updatedAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  oneToMany:
+    bookLoans:
+      targetEntity: AppBundle\Entity\Member
+      mappedBy: member
+  manyToOne:
+    primaryLocation:
+      targetEntity: AppBundle\Entity\Location
+      mappedBy: members

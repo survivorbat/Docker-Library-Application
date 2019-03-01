@@ -1,0 +1,37 @@
+AppBundle\Entity\BookExemplar:
+  type: entity
+  id:
+    id:
+      type: string
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    createdAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updatedAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  manyToOne:
+    pastLoans:
+      targetEntity: AppBundle\Entity\BookLoan
+      mappedBy: bookExemplar
+  oneToOne:
+    currentLoan:
+      targetEntity: AppBundle\Entity\BookLoan
+      mappedBy: bookExemplar
+  oneToMany:
+    book:
+      targetEntity: AppBundle\Entity\Book
+      mappedBy: bookExemplars
+      inversedBy: book
+    location:
+      targetEntity: AppBundle\Entity\Location
+      mappedBy: bookExemplars

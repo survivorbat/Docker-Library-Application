@@ -26,8 +26,8 @@ services:
       - 9000
     environment:
       - DATABASE_DATABASE=library_application
-      - DATABASE_USER=050a69672299fabf7c1f531ff0468c7e050a69672299fabf7c1f531ff0468c7e
-      - DATABASE_PASSWORD=0c680e1cbdca4249be9677fd12d579febf41afcf0c680e1cbdca4249be9677fd12d579febf41afcf
+      - DATABASE_USER=library_system
+      - DATABASE_PASSWORD=0c680e1cbdca42
       - DATABASE_HOST=database
   webserver:
     build:
@@ -57,7 +57,7 @@ services:
       - database:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=library_application
-      - MYSQL_USER=050a69672299fabf7c1f531ff0468c7e050a69672299fabf7c1f531ff0468c7e
-      - MYSQL_PASSWORD=0c680e1cbdca4249be9677fd12d579febf41afcf0c680e1cbdca4249be9677fd12d579febf41afcf
+      - MYSQL_USER=library_system
+      - MYSQL_PASSWORD=0c680e1cbdca42
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
     restart: always

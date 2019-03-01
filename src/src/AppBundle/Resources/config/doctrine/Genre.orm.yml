@@ -1,0 +1,29 @@
+AppBundle\Entity\Genre:
+  type: entity
+  id:
+    id:
+      type: string
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    title:
+      type: string
+    description:
+      name: text
+    createdAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updatedAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  manyToMany:
+    belongsToBooks:
+      targetEntity: AppBundle\Entity\Book
+      mappedBy: genres

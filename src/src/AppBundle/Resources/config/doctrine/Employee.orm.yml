@@ -1,0 +1,36 @@
+AppBundle\Entity\Employee:
+  type: entity
+  id:
+    id:
+      type: string
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    firstName:
+      type: string
+    insertion:
+      type: string
+    lastName:
+      type: string
+    email:
+      type: string
+    phoneNumber:
+      type: string
+    createdAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updatedAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  oneToMany:
+    location:
+      targetEntity: AppBundle\Entity\Location
+      mappedBy: employees
+      inversedBy: location

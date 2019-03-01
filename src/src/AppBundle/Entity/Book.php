@@ -3,13 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 class Book
 {
+    use TimestampableEntity;
+
     /** @var string $id */
     private $id = '';
     /** @var string $isbn */
-    private $isbn;
+    private $isbn = '';
     /** @var string $title */
     private $title = '';
     /** @var string $description*/
@@ -122,7 +125,7 @@ class Book
      * @param BookExemplar|array $bookExemplars
      * @return Book
      */
-    public function setBookExamplars($bookExemplars)
+    public function setBookExemplars($bookExemplars): Book
     {
         $this->bookExemplars = $bookExemplars;
         return $this;
