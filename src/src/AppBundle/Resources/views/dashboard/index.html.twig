@@ -32,6 +32,27 @@
                     </ul>
                 </div>
             </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Recente Exemplaren</h3>
+                    <ul class="list-group">
+                        {% for bookExemplar in bookExemplars | slice(0, 5) %}
+                            <li class="list-group-item d-flex w-100 justify-content-between">
+                                <a href="">
+                                    {{ bookExemplar.book.title }}
+                                </a>
+                                <small class="text-muted">
+                                    {{ bookExemplar.createdAt | date("d-m-Y") }}
+                                </small>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">
+                                Geen nieuwe exemplaren
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-light">
@@ -55,6 +76,27 @@
                     </ul>
                 </div>
             </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Recente uitleningen</h3>
+                    <ul class="list-group">
+                        {% for bookLoans in bookLoans | slice(0, 5) %}
+                            <li class="list-group-item d-flex w-100 justify-content-between">
+                                <a href="">
+                                    {{ bookLoans.member.name }}
+                                </a>
+                                <small class="text-muted">
+                                    {{ bookLoans.createdAt | date("d-m-Y") }}
+                                </small>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">
+                                Geen nieuwe uitleningen
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-light">
@@ -73,6 +115,27 @@
                         {% else %}
                             <li class="list-group-item">
                                 Geen nieuwe genres
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Recente leden</h3>
+                    <ul class="list-group">
+                        {% for member in members | slice(0, 5) %}
+                            <li class="list-group-item d-flex w-100 justify-content-between">
+                                <a href="">
+                                    {{ member.name }}
+                                </a>
+                                <small class="text-muted">
+                                    {{ member.createdAt | date("d-m-Y") }}
+                                </small>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">
+                                Geen nieuwe leden
                             </li>
                         {% endfor %}
                     </ul>

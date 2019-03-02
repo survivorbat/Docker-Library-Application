@@ -33,6 +33,7 @@ AppBundle\Entity\Book:
     author:
       targetEntity: AppBundle\Entity\Author
       mappedBy: books
+      inversedBy: books
   oneToMany:
     bookExemplars:
       targetEntity: AppBundle\Entity\BookExemplar
