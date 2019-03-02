@@ -2,53 +2,52 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Entity\Book;
+use AppBundle\Entity\Author;
 use Doctrine\Common\Persistence\ObjectRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
-class BookService
+class AuthorService
 {
-    /** @var ObjectRepository $bookRepository */
-    private $bookRepository;
+    /** @var ObjectRepository $authorRepository */
+    private $authorRepository;
     /** @var EntityManagerInterface $em */
     private $em;
 
     /**
-     * BookService constructor.
+     * AuthorService constructor.
      * @param EntityManagerInterface $entityManager
      */
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->em = $entityManager;
-        $this->bookRepository = $entityManager->getRepository(Book::class);
+        $this->authorRepository = $entityManager->getRepository(Author::class);
     }
 
     /**
-     * @return Book[]|array
+     * @return Author[]|array
      */
     public function findAll(): array
     {
-        /** @var Book[]|array $books */
-        $books =  $this->bookRepository->findBy([], ['createdAt' => 'DESC']);
+        /** @var Author[]|array $authors */
+        $authors = $this->authorRepository->findBy([], ['createdAt' => 'DESC']);
 
-        return $books;
+        return $authors;
     }
 
     /**
-     * @param Book $book
+     * @param Author $book
      */
-    public function save(Book $book): void
+    public function save(Author $book): void
     {
         $this->em->persist($book);
         $this->em->flush();
     }
 
     /**
-     * @param Book $book
+     * @param Author $book
      */
-    public function delete(Book $book): void
+    public function delete(Author $book): void
     {
         $this->em->remove($book);
         $this->em->flush();

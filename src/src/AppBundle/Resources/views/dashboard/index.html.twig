@@ -1,0 +1,83 @@
+{% extends '@App/base.html.twig' %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2>Bibliotheek Management Systeem</h2>
+                    <p>Lorem ipsum</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 well">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Recente boeken</h3>
+                    <ul class="list-group">
+                        {% for book in books | slice(0, 5) %}
+                            <li class="list-group-item d-flex w-100 justify-content-between">
+                                <a href="">
+                                    {{ book.title }}
+                                </a>
+                                <small class="text-muted">
+                                    {{ book.createdAt | date("d-m-Y") }}
+                                </small>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">
+                                Geen nieuwe auteurs
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Recente auteurs</h3>
+                    <ul class="list-group">
+                        {% for author in authors | slice(0, 5) %}
+                            <li class="list-group-item d-flex w-100 justify-content-between">
+                                <a href="">
+                                    {{ author.name }}
+                                </a>
+                                <small class="text-muted">
+                                    {{ author.createdAt | date("d-m-Y") }}
+                                </small>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">
+                                Geen nieuwe auteurs
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Recente genres</h3>
+                    <ul class="list-group">
+                        {% for genre in genres | slice(0, 5) %}
+                            <li class="list-group-item d-flex w-100 justify-content-between">
+                                <a href="">
+                                    {{ genre.title }}
+                                </a>
+                                <small class="text-muted">
+                                    {{ genre.createdAt | date("d-m-Y") }}
+                                </small>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">
+                                Geen nieuwe genres
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

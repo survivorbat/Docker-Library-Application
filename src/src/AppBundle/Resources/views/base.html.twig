@@ -15,13 +15,25 @@
     </head>
     <body>
         {% block body %}
-            <div class="container">
+            <div class="container-fluid">
                 {% block header %}
-                    <header></header>
+                    <header class="row">
+
+                    </header>
                 {% endblock %}
                 {% block container %}{% endblock %}
                 {% block footer %}
-                    <footer></footer>
+                    <footer class="row">
+                        <div class="col-12">
+                            <div class="card text-center">
+                                <div class="card-body bg-light">
+                                    <p>
+                                        © InfraTech - {{ "now" | date("Y") }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
                 {% endblock %}
             </div>
         {% endblock %}

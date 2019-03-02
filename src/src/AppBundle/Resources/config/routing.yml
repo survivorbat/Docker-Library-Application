@@ -5,3 +5,15 @@ home:
 book:
   prefix: /book
   resource: routing/book.yml
+
+author:
+  prefix: /author
+  resource: routing/author.yml
+
+dashboard:
+  prefix: /dashboard
+  resource: routing/dashboard.yml
+
+genre:
+  prefix: /genre
+  resource: routing/genre.yml

@@ -1,0 +1,4 @@
+app_genre_index:
+  path: /
+  defaults:
+    _controller: 
