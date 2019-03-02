@@ -29,7 +29,7 @@ class BookLoanService
     public function findAll(): array
     {
         /** @var BookLoan[]|array $bookLoans */
-        $bookLoans = $this->bookLoanRepository->findBy([], ['createdAt' => 'DESC']);
+        $bookLoans = $this->bookLoanRepository->findBy([], ['startDate' => 'DESC']);
 
         return $bookLoans;
     }

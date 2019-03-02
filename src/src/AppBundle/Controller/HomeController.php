@@ -12,8 +12,6 @@ class HomeController extends Controller
      */
     public function indexAction(): Response
     {
-        return $this->render('@App/home/index.html.twig', [
-            'ip' => $_SERVER['SERVER_ADDR']
-        ]);
+        return $this->redirectToRoute('app_dashboard_index');
     }
 }
