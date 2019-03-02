@@ -82,3 +82,10 @@ snc_redis:
         second_level_cache:
             client: cache
             entity_manager: default
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sortable: true
+            loggable: true
+            timestampable:  Gedmo\Timestampable\TimestampableListener

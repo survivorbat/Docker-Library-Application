@@ -11,6 +11,8 @@ class Employee implements UserInterface
 
     /** @var string $id */
     private $id = '';
+    /** @var string $username */
+    private $username = '';
     /** @var string $firstName */
     private $firstName = '';
     /** @var string $insertion */
@@ -23,17 +25,25 @@ class Employee implements UserInterface
     private $phoneNumber = '';
     /** @var Location|null $location */
     private $location;
+    /** @var string $password */
+    private $password = '';
 
 
+    /**
+     * @return array
+     */
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return ['user'];
     }
 
 
+    /**
+     * @return string
+     */
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->password;
     }
 
 
@@ -42,9 +52,12 @@ class Employee implements UserInterface
         // TODO: Implement getSalt() method.
     }
 
+    /**
+     * @return string
+     */
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->username;
     }
 
     public function eraseCredentials()
@@ -165,6 +178,26 @@ class Employee implements UserInterface
     public function setLocation(?Location $location): Employee
     {
         $this->location = $location;
+        return $this;
+    }
+
+    /**
+     * @param string $username
+     * @return Employee
+     */
+    public function setUsername(string $username): Employee
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @param string $password
+     * @return Employee
+     */
+    public function setPassword(string $password): Employee
+    {
+        $this->password = $password;
         return $this;
     }
 }

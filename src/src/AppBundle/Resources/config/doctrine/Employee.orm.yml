@@ -17,6 +17,11 @@ AppBundle\Entity\Employee:
       type: string
     phoneNumber:
       type: string
+    username:
+      type: string
+    password:
+      type: string
+      length: 512
     createdAt:
       type: datetime
       nullable: true
@@ -29,7 +34,7 @@ AppBundle\Entity\Employee:
       gedmo:
         timestampable:
           on: update
-  oneToMany:
+  manyToOne:
     location:
       targetEntity: AppBundle\Entity\Location
       mappedBy: employees

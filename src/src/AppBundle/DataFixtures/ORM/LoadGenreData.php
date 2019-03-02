@@ -19,6 +19,9 @@ class LoadGenreData extends AbstractFixture implements OrderedFixtureInterface, 
     /** @var Generator $faker */
     private $faker;
 
+    /**
+     * LoadGenreData constructor.
+     */
     public function __construct()
     {
         $this->faker = Factory::create('nl_NL');
@@ -32,7 +35,7 @@ class LoadGenreData extends AbstractFixture implements OrderedFixtureInterface, 
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
-            $genre = (new Genre())->setTitle($this->faker->realText(12))
+            $genre = (new Genre())->setTitle($this->faker->word)
                 ->setDescription($this->faker->realText(200));
 
             $this->setReference('genre_' . $i, $genre);

@@ -49,10 +49,12 @@ class BookLoan
 
     /**
      * @param Member|null $member
+     * @return BookLoan
      */
-    public function setMember(?Member $member): void
+    public function setMember(?Member $member): BookLoan
     {
         $this->member = $member;
+        return $this;
     }
 
     /**
@@ -65,10 +67,12 @@ class BookLoan
 
     /**
      * @param BookExemplar|null $bookExemplar
+     * @return BookLoan
      */
-    public function setBookExemplar(?BookExemplar $bookExemplar): void
+    public function setBookExemplar(?BookExemplar $bookExemplar): BookLoan
     {
         $this->bookExemplar = $bookExemplar;
+        return $this;
     }
 
     /**
@@ -81,10 +85,12 @@ class BookLoan
 
     /**
      * @param \DateTime $startDate
+     * @return BookLoan
      */
-    public function setStartDate(\DateTime $startDate): void
+    public function setStartDate(\DateTime $startDate): BookLoan
     {
         $this->startDate = $startDate;
+        return $this;
     }
 
     /**
@@ -97,10 +103,12 @@ class BookLoan
 
     /**
      * @param \DateTime $dueDate
+     * @return BookLoan
      */
-    public function setDueDate(\DateTime $dueDate): void
+    public function setDueDate(\DateTime $dueDate): BookLoan
     {
         $this->dueDate = $dueDate;
+        return $this;
     }
 
     /**
@@ -113,9 +121,11 @@ class BookLoan
 
     /**
      * @param float $pastDueFine
+     * @return BookLoan
      */
-    public function setPastDueFine(float $pastDueFine): void
+    public function setPastDueFine(float $pastDueFine): BookLoan
     {
         $this->pastDueFine = $pastDueFine;
+        return $this;
     }
 }

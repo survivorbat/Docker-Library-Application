@@ -4,7 +4,10 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Author;
 use AppBundle\Entity\Book;
+use AppBundle\Entity\Employee;
 use AppBundle\Entity\Genre;
+use AppBundle\Entity\Location;
+use AppBundle\Entity\Member;
 use Doctrine\Bundle\FixturesBundle\ORMFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -12,15 +15,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
-class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
+class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 60;
+    const AMOUNT = 5;
 
     /** @var Generator $faker */
     private $faker;
 
     /**
-     * LoadAuthorData constructor.
+     * LoadBookData constructor.
      */
     public function __construct()
     {
@@ -31,15 +34,23 @@ class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface,
      * Load data fixtures with the passed EntityManager
      *
      * @param ObjectManager $manager
+     * @throws \Exception
      */
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
-            $author = (new Author())->setName($this->faker->name);
+            $employee = (new Employee())->setFirstName($this->faker->firstName)
+                ->setLastName($this->faker->lastName)
+                ->setUsername($this->faker->userName)
+                ->setPassword($this->faker->password)
+                ->setEmail($this->faker->email)
+                ->setPhoneNumber($this->faker->phoneNumber)
+                ->setLocation($this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT)));
 
-            $this->setReference('author_' . $i, $author);
+            $this->setReference('employee_' . $i, $employee);
 
-            $manager->persist($author);
+            $manager->persist($employee);
+            $manager->flush();
         }
 
         $manager->flush();
@@ -52,6 +63,6 @@ class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface,
      */
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 }

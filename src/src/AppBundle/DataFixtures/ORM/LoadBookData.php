@@ -19,6 +19,9 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, O
     /** @var Generator $faker */
     private $faker;
 
+    /**
+     * LoadBookData constructor.
+     */
     public function __construct()
     {
         $this->faker = Factory::create('nl_NL');
@@ -41,6 +44,8 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, O
                 ->setAuthor($author)
                 ->setGenres($this->getRandomAmountOfGenres(3));
 
+            $this->setReference('book_' . $i, $book);
+
             $manager->persist($book);
         }
 
@@ -57,7 +62,9 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, O
         $genres = [];
 
         for ($i = 0; $i < random_int(0, $max); $i++) {
-            $genres[] = $this->getReference('genre_' . random_int(0, LoadGenreData::AMOUNT));
+            $genre = $this->getReference('genre_' . random_int(0, LoadGenreData::AMOUNT));
+
+            in_array($genre, $genres) ?: $genres[] = $genre;
         }
 
         return $genres;

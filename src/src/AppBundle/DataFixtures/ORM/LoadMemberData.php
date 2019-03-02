@@ -5,6 +5,8 @@ namespace AppBundle\DataFixtures\ORM;
 use AppBundle\Entity\Author;
 use AppBundle\Entity\Book;
 use AppBundle\Entity\Genre;
+use AppBundle\Entity\Location;
+use AppBundle\Entity\Member;
 use Doctrine\Bundle\FixturesBundle\ORMFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -12,15 +14,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
-class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
+class LoadMemberData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 60;
+    const AMOUNT = 5;
 
     /** @var Generator $faker */
     private $faker;
 
     /**
-     * LoadAuthorData constructor.
+     * LoadBookData constructor.
      */
     public function __construct()
     {
@@ -31,15 +33,18 @@ class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface,
      * Load data fixtures with the passed EntityManager
      *
      * @param ObjectManager $manager
+     * @throws \Exception
      */
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
-            $author = (new Author())->setName($this->faker->name);
+            $member = (new Member())->setName($this->faker->name)
+                ->setPrimaryLocation($this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT)));
 
-            $this->setReference('author_' . $i, $author);
+            $this->setReference('member_' . $i, $member);
 
-            $manager->persist($author);
+            $manager->persist($member);
+            $manager->flush();
         }
 
         $manager->flush();
@@ -52,6 +57,6 @@ class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface,
      */
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 }

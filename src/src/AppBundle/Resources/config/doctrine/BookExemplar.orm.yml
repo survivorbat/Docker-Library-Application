@@ -19,19 +19,27 @@ AppBundle\Entity\BookExemplar:
       gedmo:
         timestampable:
           on: update
-  manyToOne:
+  manyToMany:
     pastLoans:
       targetEntity: AppBundle\Entity\BookLoan
       mappedBy: bookExemplar
+      joinTable:
+        name: book_exemplar_past_loans
+        joinColumns:
+          exemplar_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          loan_id:
+            referencedColumnName: id
   oneToOne:
     currentLoan:
       targetEntity: AppBundle\Entity\BookLoan
       mappedBy: bookExemplar
-  oneToMany:
+  manyToOne:
     book:
       targetEntity: AppBundle\Entity\Book
-      mappedBy: bookExemplars
-      inversedBy: book
+      mappedBy: book
+      inversedBy: bookExemplars
     location:
       targetEntity: AppBundle\Entity\Location
       mappedBy: bookExemplars
