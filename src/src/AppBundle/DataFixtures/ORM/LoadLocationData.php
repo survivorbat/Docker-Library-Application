@@ -15,7 +15,7 @@ use Faker\Generator;
 
 class LoadLocationData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 5;
+    const AMOUNT = 3;
 
     /** @var Generator $faker */
     private $faker;

@@ -11,9 +11,11 @@ class BookExemplar
 
     /** @var string $id */
     private $id = '';
+    /** @var int $exemplarNumber */
+    private $exemplarNumber = 0;
     /** @var Book|null $book */
     private $book;
-    /** @var BookLoan[]|array $pastLoans */
+    /** @var BookLoan[]|ArrayCollection|array $pastLoans */
     private $pastLoans;
     /** @var BookLoan|null $currentLoan */
     private $currentLoan;
@@ -127,6 +129,24 @@ class BookExemplar
     public function setLocation(?Location $location): BookExemplar
     {
         $this->location = $location;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getExemplarNumber(): int
+    {
+        return $this->exemplarNumber;
+    }
+
+    /**
+     * @param int $exemplarNumber
+     * @return BookExemplar
+     */
+    public function setExemplarNumber(int $exemplarNumber): BookExemplar
+    {
+        $this->exemplarNumber = $exemplarNumber;
         return $this;
     }
 }

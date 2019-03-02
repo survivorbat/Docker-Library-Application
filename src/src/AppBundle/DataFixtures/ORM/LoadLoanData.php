@@ -2,7 +2,9 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\BookExemplar;
 use AppBundle\Entity\BookLoan;
+use AppBundle\Entity\Member;
 use Doctrine\Bundle\FixturesBundle\ORMFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -34,13 +36,16 @@ class LoadLoanData extends AbstractFixture implements OrderedFixtureInterface, O
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
-            $bookExemplar = $this->getReference('bookExemplar_' . LoadExemplarData::AMOUNT);
+            /** @var BookExemplar $bookExemplar */
+            $bookExemplar = $this->getReference('bookExemplar_' . random_int(0, LoadExemplarData::AMOUNT));
+            /** @var Member $member */
+            $member = $this->getReference('member_' . random_int(0, LoadMemberData::AMOUNT));
 
             $bookLoan = (new BookLoan())->setBookExemplar($bookExemplar)
                 ->setDueDate(new \DateTime('+2 weeks'))
                 ->setPastDueFine(0)
-                ->setStartDate(new \DateTime())
-                ->setMember($this->getReference('member_' . random_int(0, LoadMemberData::AMOUNT)));
+                ->setStartDate($this->faker->dateTimeBetween('-3 years', 'now'))
+                ->setMember($member);
 
             $manager->persist($bookLoan);
         }

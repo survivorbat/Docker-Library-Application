@@ -17,3 +17,7 @@ dashboard:
 genre:
   prefix: /genre
   resource: routing/genre.yml
+
+security:
+  prefix: /security
+  resource: routing/security.yml

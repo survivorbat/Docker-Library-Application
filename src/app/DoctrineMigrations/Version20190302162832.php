@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190302132423 extends AbstractMigration
+final class Version20190302162832 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -23,7 +23,7 @@ final class Version20190302132423 extends AbstractMigration
         $this->addSql('CREATE TABLE author (id VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, created_at DATETIME DEFAULT NULL, updated_at DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8 COLLATE UTF8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE book (id VARCHAR(255) NOT NULL, author_id VARCHAR(255) DEFAULT NULL, title VARCHAR(255) NOT NULL, description LONGTEXT NOT NULL, isbn VARCHAR(255) NOT NULL, created_at DATETIME DEFAULT NULL, updated_at DATETIME DEFAULT NULL, INDEX IDX_CBE5A331F675F31B (author_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8 COLLATE UTF8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE book_genre (book_id VARCHAR(255) NOT NULL, genre_id VARCHAR(255) NOT NULL, INDEX IDX_8D92268116A2B381 (book_id), INDEX IDX_8D9226814296D31F (genre_id), PRIMARY KEY(book_id, genre_id)) DEFAULT CHARACTER SET UTF8 COLLATE UTF8_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE book_exemplar (id VARCHAR(255) NOT NULL, book_id VARCHAR(255) DEFAULT NULL, location_id VARCHAR(255) DEFAULT NULL, created_at DATETIME DEFAULT NULL, updated_at DATETIME DEFAULT NULL, INDEX IDX_EAD50C9816A2B381 (book_id), INDEX IDX_EAD50C9864D218E (location_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8 COLLATE UTF8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE book_exemplar (id VARCHAR(255) NOT NULL, book_id VARCHAR(255) DEFAULT NULL, location_id VARCHAR(255) DEFAULT NULL, exemplar_number INT NOT NULL, created_at DATETIME DEFAULT NULL, updated_at DATETIME DEFAULT NULL, INDEX IDX_EAD50C9816A2B381 (book_id), INDEX IDX_EAD50C9864D218E (location_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET UTF8 COLLATE UTF8_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE member ADD CONSTRAINT FK_70E4FA78A2A2410F FOREIGN KEY (primary_location_id) REFERENCES location (id)');
         $this->addSql('ALTER TABLE book_loan ADD CONSTRAINT FK_DC4E460BCF4D45C5 FOREIGN KEY (book_exemplar_id) REFERENCES book_exemplar (id)');
         $this->addSql('ALTER TABLE book_loan ADD CONSTRAINT FK_DC4E460B7597D3FE FOREIGN KEY (member_id) REFERENCES member (id)');

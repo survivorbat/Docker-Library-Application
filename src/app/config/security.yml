@@ -4,8 +4,13 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        database_provider:
+            entity:
+                class: AppBundle:Employee
+                property: username
+
+    role_hierarchy:
+        ROLE_USER: []
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,10 +20,20 @@ security:
 
         main:
             anonymous: ~
-            # activate different ways to authenticate
+            #stateless: true
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+            form_login:
+                login_path: 'app_security_login'
+                check_path: 'app_security_login'
+                csrf_token_generator: security.csrf.token_manager
+                default_target_path: /dashboard
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+    access_control:
+        - { path: ^\/security/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^\/security/logout, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^\/.*, roles: ROLE_USER }
+        - { path: ^\/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    encoders:
+        AppBundle\Entity\Employee:
+            algorithm: bcrypt
+            cost: 12

@@ -7,6 +7,8 @@ AppBundle\Entity\BookExemplar:
       generator:
         strategy: UUID
   fields:
+    exemplarNumber:
+      type: integer
     createdAt:
       type: datetime
       nullable: true

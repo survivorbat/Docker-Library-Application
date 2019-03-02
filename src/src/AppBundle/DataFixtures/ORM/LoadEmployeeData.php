@@ -14,13 +14,16 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
+use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 
 class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 5;
+    const AMOUNT = 30;
 
     /** @var Generator $faker */
     private $faker;
+    /** @var BCryptPasswordEncoder $bcrypt */
+    private $bcrypt;
 
     /**
      * LoadBookData constructor.
@@ -28,6 +31,7 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
     public function __construct()
     {
         $this->faker = Factory::create('nl_NL');
+        $this->bcrypt = new BCryptPasswordEncoder(12);
     }
 
     /**
@@ -42,7 +46,7 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
             $employee = (new Employee())->setFirstName($this->faker->firstName)
                 ->setLastName($this->faker->lastName)
                 ->setUsername($this->faker->userName)
-                ->setPassword($this->faker->password)
+                ->setPassword($this->bcrypt->encodePassword('test', ''))
                 ->setEmail($this->faker->email)
                 ->setPhoneNumber($this->faker->phoneNumber)
                 ->setLocation($this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT)));
@@ -52,6 +56,12 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
             $manager->persist($employee);
             $manager->flush();
         }
+
+        $admin = (new Employee())
+            ->setUsername('admin')
+            ->setPassword($this->bcrypt->encodePassword('admin', ''));
+
+        $manager->persist($admin);
 
         $manager->flush();
     }

@@ -3,6 +3,7 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\BookExemplar;
+use AppBundle\Entity\Location;
 use Doctrine\Bundle\FixturesBundle\ORMFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -12,7 +13,7 @@ use Faker\Generator;
 
 class LoadExemplarData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 60;
+    const AMOUNT = 100;
 
     /** @var Generator $faker */
     private $faker;
@@ -34,11 +35,14 @@ class LoadExemplarData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
+            /** @var BookExemplar $book */
             $book = $this->getReference('book_' . random_int(0, LoadBookData::AMOUNT));
+            /** @var Location $location */
             $location = $this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT));
 
             $bookExemplar = (new BookExemplar())->setBook($book)
-                ->setLocation($location);
+                ->setLocation($location)
+                ->setExemplarNumber($i);
 
             $this->setReference('bookExemplar_' . $i, $bookExemplar);
 

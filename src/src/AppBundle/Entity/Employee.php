@@ -34,7 +34,7 @@ class Employee implements UserInterface
      */
     public function getRoles()
     {
-        return ['user'];
+        return ['ROLE_USER'];
     }
 
 
@@ -47,9 +47,12 @@ class Employee implements UserInterface
     }
 
 
+    /**
+     * @return string|void|null
+     */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return;
     }
 
     /**

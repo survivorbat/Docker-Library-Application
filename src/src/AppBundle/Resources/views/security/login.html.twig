@@ -1,0 +1,35 @@
+{% extends '@App/base.html.twig' %}
+
+{% block container %}
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            {% if error %}
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <p>{{ error.messageKey | trans(error.messageData, 'security') }}</p>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="card-title">Medewerker login</h3>
+                    <form action="{{ path('app_security_login') }}" method="post">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <input type="hidden" name="_target_path" name="{{ path('app_dashboard_index') }}">
+                        <div class="form-group">
+                            <label for="username">Gebruikersnaam</label>
+                            <input type="text" name="_username" value="{{ lastUsername }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Wachtwoord</label>
+                            <input type="password" name="_password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Inloggen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -16,7 +16,7 @@ use Faker\Generator;
 
 class LoadMemberData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 5;
+    const AMOUNT = 30;
 
     /** @var Generator $faker */
     private $faker;
@@ -38,8 +38,11 @@ class LoadMemberData extends AbstractFixture implements OrderedFixtureInterface,
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
+            /** @var Location $location */
+            $location = $this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT));
+
             $member = (new Member())->setName($this->faker->name)
-                ->setPrimaryLocation($this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT)));
+                ->setPrimaryLocation($location);
 
             $this->setReference('member_' . $i, $member);
 

@@ -5,8 +5,50 @@
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2>Bibliotheek Management Systeem</h2>
+                    <h2 class="card-title">Bibliotheek Management Systeem</h2>
                     <p>Lorem ipsum</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Lid</th>
+                                    <th>Boek</th>
+                                    <th>Exemplaar</th>
+                                    <th>Uitleendatum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for bookLoan in bookLoans | slice(0, 10) %}
+                                    <tr>
+                                        <td>
+                                            <a href="">
+                                                {{ bookLoan.member.name }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="">
+                                                {{ bookLoan.bookExemplar.book.title }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="">
+                                                #{{ bookLoan.bookExemplar.exemplarNumber }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="">
+                                                {{ bookLoan.startDate | date("d-m-Y") }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">Geen uitleningen gevonden</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,7 +81,7 @@
                         {% for bookExemplar in bookExemplars | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
                                 <a href="">
-                                    {{ bookExemplar.book.title }}
+                                    #{{ bookExemplar.exemplarNumber }}
                                 </a>
                                 <small class="text-muted">
                                     {{ bookExemplar.createdAt | date("d-m-Y") }}
@@ -78,20 +120,20 @@
             </div>
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente uitleningen</h3>
+                    <h3 class="card-title">Recente locaties</h3>
                     <ul class="list-group">
-                        {% for bookLoans in bookLoans | slice(0, 5) %}
+                        {% for location in locations | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
                                 <a href="">
-                                    {{ bookLoans.member.name }}
+                                    {{ location.name }}
                                 </a>
                                 <small class="text-muted">
-                                    {{ bookLoans.createdAt | date("d-m-Y") }}
+                                    {{ location.createdAt | date("d-m-Y") }}
                                 </small>
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe uitleningen
+                                Geen nieuwe locaties
                             </li>
                         {% endfor %}
                     </ul>
