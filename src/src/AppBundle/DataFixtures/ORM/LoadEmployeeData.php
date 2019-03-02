@@ -43,13 +43,16 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
+            /** @var Location $location */
+            $location = $this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT));
+
             $employee = (new Employee())->setFirstName($this->faker->firstName)
                 ->setLastName($this->faker->lastName)
                 ->setUsername($this->faker->userName)
                 ->setPassword($this->bcrypt->encodePassword('test', ''))
                 ->setEmail($this->faker->email)
                 ->setPhoneNumber($this->faker->phoneNumber)
-                ->setLocation($this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT)));
+                ->setLocation($location);
 
             $this->setReference('employee_' . $i, $employee);
 

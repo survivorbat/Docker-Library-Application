@@ -62,6 +62,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, O
         $genres = [];
 
         for ($i = 0; $i < random_int(0, $max); $i++) {
+            /** @var Genre $genre */
             $genre = $this->getReference('genre_' . random_int(0, LoadGenreData::AMOUNT));
 
             in_array($genre, $genres) ?: $genres[] = $genre;
