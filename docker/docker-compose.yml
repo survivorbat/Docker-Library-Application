@@ -10,7 +10,14 @@ volumes:
   database: ~
   logs: ~
 
+# TODO: Add local mounts to dev compose and keep normal volumes here
+
 services:
+  code:
+    build:
+      context: code
+    volumes:
+      - app:/srv/html/src
   php:
     build:
       context: php
