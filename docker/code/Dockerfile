@@ -1,7 +1,12 @@
 FROM alpine:3.9
 
-RUN apk add git
-
 WORKDIR /srv/html
 
-CMD rm -Rf /tempcode && git clone https://github.com/survivorbat/Docker-Library-Application /tempcode && cp -rf /tempcode/* /srv/html && rm -Rf /tempcode
+RUN apk add git && chown -R 1000:1000 /srv/html && mkdir /srv/html/src && chown -R 1000:1000 /srv/html/src
+
+USER 1000
+
+CMD git clone https://github.com/survivorbat/Docker-Library-Application /srv/html/tempcode && \
+    ls -la /srv/html && \
+    cp -rf /srv/html/tempcode/* /srv/html && \
+    rm -Rf /tempcode/*

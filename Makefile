@@ -45,7 +45,7 @@ symfony.fixtures.load:
 	docker-compose -f docker/docker-compose.yml -p libraryapp exec --user=1000 php bin/console doctrine:fixtures:load
 
 prod.up:
-	docker-compose -f docker/docker-compose.yml -p libraryapp up -d --scale php=4
+	docker-compose -f docker/docker-compose.yml -p libraryapp up -d --scale php=2
 	make composer.install
 	make symfony.ready
 
