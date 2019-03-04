@@ -4,6 +4,12 @@ services:
   webserver:
     volumes:
       - ./webserver/sites-enabled:/etc/nginx/sites-enabled
+      - ../src:/srv/html
   database:
     ports:
       - "3306:3306"
+  php:
+    volumes:
+      - ../src:/srv/html
+  code:
+    command: "pwd"

@@ -45,3 +45,4 @@ AppBundle\Entity\BookExemplar:
     location:
       targetEntity: AppBundle\Entity\Location
       mappedBy: bookExemplars
+      inversedBy: bookExemplars

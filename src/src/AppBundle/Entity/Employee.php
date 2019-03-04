@@ -203,4 +203,12 @@ class Employee implements UserInterface
         $this->password = $password;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return $this->firstName .' ' . (!empty($this->insertion) ? $this->insertion . ' ' : '') . $this->lastName;
+    }
 }

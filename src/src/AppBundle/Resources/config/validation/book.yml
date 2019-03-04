@@ -1,0 +1,9 @@
+AppBundle\Entity\Book:
+  title:
+    NotBlank: ~
+    minLength: 2
+    maxLength: 255
+  description:
+    NotBlank: ~
+    minLength: 10
+    maxLength: 512

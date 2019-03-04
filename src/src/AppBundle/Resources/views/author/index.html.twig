@@ -9,29 +9,28 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Titel</th>
-                                <th>Genres</th>
-                                <th>Auteur</th>
+                                <th>Naam</th>
+                                <th>Boeken</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for book in books %}
+                            {% for author in authors %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
+                                        <a href="{{ path('app_author_view', { author: author.id }) }}">{{- author.name -}}</a>
                                     </td>
                                     <td>
-                                        {% for key, genre in book.genres %}
-                                            {{- genre.title ~ ', ' -}}
-                                        {% else %}
-                                            <span class="text-muted">Geen</span>
-                                        {% endfor %}
-                                    </td>
-                                    <td>
-                                        <a href=""></a>
-                                        {{- book.author.name -}}
+                                        <ul>
+                                            {% for key, book in author.books %}
+                                            <li>
+                                                <a href="{{ path('app_book_view', { book: book.id}) }}">{{- book.title -}}</a>
+                                            </li>
+                                            {% else %}
+                                                <span class="text-muted">Geen</span>
+                                            {% endfor %}
+                                        </ul>
                                     </td>
                                     <td>
                                         <button class="btn btn-primary">Aanpassen</button>

@@ -21,3 +21,19 @@ genre:
 security:
   prefix: /security
   resource: routing/security.yml
+
+bookExemplar:
+  prefix: /bookExemplar
+  resource: routing/bookExemplar.yml
+
+location:
+  prefix: /location
+  resource: routing/location.yml
+
+employee:
+  prefix: /employee
+  resource: routing/employee.yml
+
+member:
+  prefix: /member
+  resource: routing/member.yml

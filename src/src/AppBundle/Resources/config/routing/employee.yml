@@ -1,0 +1,19 @@
+app_employee_index:
+  path: /
+  defaults:
+    _controller: AppBundle:Employee:index
+
+app_employee_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:Employee:create
+
+app_employee_view:
+  path: /{employee}
+  defaults:
+    _controller: AppBundle:Employee:view
+
+app_employee_update:
+  path: /{employee}/update
+  defaults:
+    _controller: AppBundle:Employee:update

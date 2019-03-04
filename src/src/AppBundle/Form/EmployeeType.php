@@ -53,7 +53,7 @@ class EmployeeType extends FormType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Employee::class
+            'data' => Employee::class,
         ]);
     }
 

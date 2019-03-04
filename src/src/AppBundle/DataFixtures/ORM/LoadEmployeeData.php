@@ -60,9 +60,17 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
             $manager->flush();
         }
 
+        /** @var Location $location */
+        $location = $this->getReference('location_' . random_int(0, LoadLocationData::AMOUNT));
+
         $admin = (new Employee())
             ->setUsername('admin')
-            ->setPassword($this->bcrypt->encodePassword('admin', ''));
+            ->setPassword($this->bcrypt->encodePassword('admin', ''))
+            ->setLocation($location)
+            ->setEmail($this->faker->email)
+            ->setFirstName($this->faker->firstName)
+            ->setLastName($this->faker->lastName)
+            ->setPhoneNumber($this->faker->phoneNumber);
 
         $manager->persist($admin);
 

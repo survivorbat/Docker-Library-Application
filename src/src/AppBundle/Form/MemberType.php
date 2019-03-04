@@ -35,7 +35,7 @@ class MemberType extends FormType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Member::class
+            'data' => Member::class,
         ]);
     }
 

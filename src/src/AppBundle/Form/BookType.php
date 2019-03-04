@@ -49,7 +49,7 @@ class BookType extends FormType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Book::class
+            'data' => Book::class,
         ]);
     }
 

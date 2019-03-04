@@ -24,8 +24,10 @@ AppBundle\Entity\Member:
   oneToMany:
     bookLoans:
       targetEntity: AppBundle\Entity\Member
-      mappedBy: member
+      mappedBy: bookLoans
+      inversedBy: bookLoans
   manyToOne:
     primaryLocation:
       targetEntity: AppBundle\Entity\Location
       mappedBy: members
+      inversedBy: members

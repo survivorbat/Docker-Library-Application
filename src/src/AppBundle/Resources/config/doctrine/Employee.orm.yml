@@ -38,4 +38,4 @@ AppBundle\Entity\Employee:
     location:
       targetEntity: AppBundle\Entity\Location
       mappedBy: employees
-      inversedBy: location
+      inversedBy: employees

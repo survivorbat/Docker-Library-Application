@@ -1,4 +1,19 @@
 app_author_index:
   path: /
   defaults:
-    _controller: 
+    _controller: AppBundle:Author:index
+
+app_author_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:Author:create
+
+app_author_view:
+  path: /{author}
+  defaults:
+    _controller: AppBundle:Author:view
+
+app_author_update:
+  path: /{author}/update
+  defaults:
+    _controller: AppBundle:Author:update

@@ -34,7 +34,7 @@ class AuthorType extends FormType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Author::class
+            'data' => Author::class,
         ]);
     }
 

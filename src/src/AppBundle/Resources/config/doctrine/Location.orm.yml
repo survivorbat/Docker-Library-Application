@@ -36,7 +36,6 @@ AppBundle\Entity\Location:
       inversedBy: location
     employees:
       targetEntity: AppBundle\Entity\Employee
-      inversedBy: location
       mappedBy: location
     members:
       targetEntity: AppBundle\Entity\Member

@@ -5,8 +5,7 @@
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">Bibliotheek Management Systeem</h2>
-                    <p>Lorem ipsum</p>
+                    <h2 class="card-title">Algemeen dashboard</h2>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -21,17 +20,17 @@
                                 {% for bookLoan in bookLoans | slice(0, 10) %}
                                     <tr>
                                         <td>
-                                            <a href="">
+                                            <a href="{{ path('app_member_view', { member: bookLoan.member.id }) }}">
                                                 {{ bookLoan.member.name }}
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="">
+                                            <a href="{{ path('app_book_view', { book: bookLoan.bookExemplar.book.id }) }}">
                                                 {{ bookLoan.bookExemplar.book.title }}
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="">
+                                            <a href="{{ path('app_bookExemplar_view', { bookExemplar: bookLoan.bookExemplar.id }) }}">
                                                 #{{ bookLoan.bookExemplar.exemplarNumber }}
                                             </a>
                                         </td>
@@ -41,11 +40,36 @@
                                     </tr>
                                 {% else %}
                                     <tr>
-                                        <td colspan="4">Geen uitleningen gevonden</td>
+                                        <td colspan="4" class="text-muted">Geen</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Nieuwe medewerkers</h3>
+                        <ul class="list-group">
+                            {% for employee in employees | slice(0, 5) %}
+                                <li class="list-group-item d-flex w-100 justify-content-between">
+                                    <a href="{{ path('app_employee_view', { employee: employee.id }) }}">
+                                        {{- employee.fullName-}}
+                                    </a>
+                                    <small class="text-muted">
+                                        {{- employee.createdAt | date("d-m-Y") -}}
+                                    </small>
+                                </li>
+                            {% else %}
+                                <li class="list-group-item">
+                                    Geen
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{{ path('app_book_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                        <a href="{{ path('app_book_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                     </div>
                 </div>
             </div>
@@ -57,19 +81,21 @@
                     <ul class="list-group">
                         {% for book in books | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
-                                <a href="">
-                                    {{ book.title }}
+                                <a href="{{ path('app_book_view', { book: book.id }) }}">
+                                    {{- book.title -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{ book.createdAt | date("d-m-Y") }}
+                                    {{- book.createdAt | date("d-m-Y") -}}
                                 </small>
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe auteurs
+                                Geen
                             </li>
                         {% endfor %}
                     </ul>
+                    <a href="{{ path('app_book_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                    <a href="{{ path('app_book_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
             <div class="card bg-light">
@@ -87,10 +113,12 @@
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe exemplaren
+                                Geen
                             </li>
                         {% endfor %}
                     </ul>
+                    <a href="{{ path('app_bookExemplar_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                    <a href="{{ path('app_bookExemplar_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
         </div>
@@ -110,10 +138,12 @@
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe auteurs
+                                Geen
                             </li>
                         {% endfor %}
                     </ul>
+                    <a href="{{ path('app_author_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                    <a href="{{ path('app_author_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
             <div class="card bg-light">
@@ -131,10 +161,12 @@
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe locaties
+                                Geen
                             </li>
                         {% endfor %}
                     </ul>
+                    <a href="{{ path('app_location_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                    <a href="{{ path('app_location_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
         </div>
@@ -154,10 +186,12 @@
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe genres
+                                Geen
                             </li>
                         {% endfor %}
                     </ul>
+                    <a href="{{ path('app_genre_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                    <a href="{{ path('app_genre_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
             <div class="card bg-light">
@@ -175,10 +209,12 @@
                             </li>
                         {% else %}
                             <li class="list-group-item">
-                                Geen nieuwe leden
+                                Geen
                             </li>
                         {% endfor %}
                     </ul>
+                    <a href="{{ path('app_member_index') }}"><button class="btn btn-primary">Overzicht</button></a>
+                    <a href="{{ path('app_member_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
         </div>

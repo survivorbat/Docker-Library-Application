@@ -1,0 +1,19 @@
+app_member_index:
+  path: /
+  defaults:
+    _controller: AppBundle:Member:index
+
+app_member_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:Member:create
+
+app_member_view:
+  path: /{member}
+  defaults:
+    _controller: AppBundle:Member:view
+
+app_member_update:
+  path: /{member}/update
+  defaults:
+    _controller: AppBundle:Member:update

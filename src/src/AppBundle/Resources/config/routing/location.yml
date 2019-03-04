@@ -1,0 +1,19 @@
+app_location_index:
+  path: /
+  defaults:
+    _controller: AppBundle:Location:index
+
+app_location_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:Location:create
+
+app_location_view:
+  path: /{location}
+  defaults:
+    _controller: AppBundle:Location:view
+
+app_location_update:
+  path: /{location}/update
+  defaults:
+    _controller: AppBundle:Location:update

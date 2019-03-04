@@ -1,4 +1,19 @@
 app_genre_index:
   path: /
   defaults:
-    _controller: 
+    _controller: AppBundle:Genre:index
+
+app_genre_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:Genre:create
+
+app_genre_view:
+  path: /{genre}
+  defaults:
+    _controller: AppBundle:Genre:view
+
+app_genre_update:
+  path: /{genre}/update
+  defaults:
+    _controller: AppBundle:Genre:update

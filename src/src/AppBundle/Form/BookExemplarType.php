@@ -51,7 +51,7 @@ class BookExemplarType extends FormType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => BookExemplar::class
+            'data' => BookExemplar::class,
         ]);
     }
 

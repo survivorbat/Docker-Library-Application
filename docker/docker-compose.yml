@@ -10,8 +10,6 @@ volumes:
   database: ~
   logs: ~
 
-# TODO: Add local mounts to dev compose and keep normal volumes here
-
 services:
   code:
     build:
@@ -21,8 +19,10 @@ services:
   php:
     build:
       context: php
+# TODO: Add local mounts to dev compose and keep normal volumes here
+
     volumes:
-      - ../src:/srv/html
+      - app:/srv/html
     working_dir: /srv/html
     networks:
       - app
@@ -40,7 +40,7 @@ services:
     build:
       context: webserver
     volumes:
-      - ../src:/srv/html
+      - app:/srv/html
       - ./webserver/sites-enabled/example.com.conf:/etc/nginx/sites-enabled/example.com.conf
     working_dir: /srv/html
     restart: always

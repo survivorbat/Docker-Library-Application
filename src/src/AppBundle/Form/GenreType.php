@@ -37,7 +37,7 @@ class GenreType extends FormType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Genre::class
+            'data' => Genre::class
         ]);
     }
 

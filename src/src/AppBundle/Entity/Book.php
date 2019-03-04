@@ -98,7 +98,7 @@ class Book
     /**
      * @return Genre[]|array
      */
-    public function getGenres(): array
+    public function getGenres()
     {
         return $this->genres;
     }
@@ -107,16 +107,16 @@ class Book
      * @param Genre[]|array $genres
      * @return Book
      */
-    public function setGenres(array $genres)
+    public function setGenres($genres)
     {
         $this->genres = $genres;
         return $this;
     }
 
     /**
-     * @return BookExemplar|array
+     * @return BookExemplar
      */
-    public function getBookExemplars(): array
+    public function getBookExemplars()
     {
         return $this->bookExemplars;
     }

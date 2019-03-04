@@ -16,8 +16,17 @@ dev.restart:
 dev.cache:
 	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console cache:clear
 	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console cache:warmup
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:cache:clear-metadata
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:cache:clear-result
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:cache:clear-query
 
 dev.fixtures.load:
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:fixtures:load -n
+
+dev.database.reset:
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:database:drop --force
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:database:create
+	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:migrations:migrate -n
 	docker-compose -f docker/docker-compose.yml -p libraryapp exec php bin/console doctrine:fixtures:load -n
 
 composer.install:
@@ -37,7 +46,6 @@ symfony.fixtures.load:
 
 prod.up:
 	docker-compose -f docker/docker-compose.yml -p libraryapp up -d --scale php=3
-	make composer.install
 
 prod.down:
 	docker-compose -f docker/docker-compose.yml -p libraryapp down

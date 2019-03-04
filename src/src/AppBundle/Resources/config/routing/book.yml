@@ -2,3 +2,18 @@ app_book_index:
   path: /
   defaults:
     _controller: AppBundle:Book:index
+
+app_book_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:Book:create
+
+app_book_view:
+  path: /{book}
+  defaults:
+    _controller: AppBundle:Book:view
+
+app_book_update:
+  path: /{book}/update
+  defaults:
+    _controller: AppBundle:Book:update
