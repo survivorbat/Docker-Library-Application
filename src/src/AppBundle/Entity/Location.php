@@ -21,11 +21,11 @@ class Location
     private $postalCode = '';
     /** @var \DateTime $openingDate */
     private $openingDate;
-    /** @var BookExemplar[]|array $bookExemplars */
+    /** @var BookExemplar[]|ArrayCollection|array $bookExemplars */
     private $bookExemplars;
-    /** @var Employee[]|array $employees */
+    /** @var Employee[]|ArrayCollection|array $employees */
     private $employees;
-    /** @var Member[]|array $members */
+    /** @var Member[]|ArrayCollection|array $members */
     private $members;
 
     /**
@@ -145,7 +145,7 @@ class Location
     }
 
     /**
-     * @param BookExemplar[]|array $bookExemplars
+     * @param BookExemplar[]|ArrayCollection|array $bookExemplars
      * @return Location
      */
     public function setBookExemplars($bookExemplars)
@@ -155,7 +155,7 @@ class Location
     }
 
     /**
-     * @return Employee[]|array
+     * @return Employee[]|ArrayCollection|array
      */
     public function getEmployees()
     {
@@ -163,7 +163,7 @@ class Location
     }
 
     /**
-     * @param Employee[]|array $employees
+     * @param Employee[]|ArrayCollection|array $employees
      * @return Location
      */
     public function setEmployees($employees)
@@ -173,7 +173,7 @@ class Location
     }
 
     /**
-     * @return Member[]|array
+     * @return Member[]|ArrayCollection|array
      */
     public function getMembers()
     {

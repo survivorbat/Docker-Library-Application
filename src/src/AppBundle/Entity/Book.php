@@ -19,9 +19,9 @@ class Book
     private $description = '';
     /** @var Author|null $author */
     private $author;
-    /** @var Genre[]|array $genres */
+    /** @var Genre[]|ArrayCollection|array $genres */
     private $genres;
-    /** @var BookExemplar|array $bookExemplars */
+    /** @var BookExemplar[]|ArrayCollection|array $bookExemplars */
     private $bookExemplars;
 
     /**
@@ -96,7 +96,7 @@ class Book
     }
 
     /**
-     * @return Genre[]|array
+     * @return Genre[]|ArrayCollection|array
      */
     public function getGenres()
     {
@@ -104,7 +104,7 @@ class Book
     }
 
     /**
-     * @param Genre[]|array $genres
+     * @param Genre[]|ArrayCollection|array $genres
      * @return Book
      */
     public function setGenres($genres)
@@ -114,7 +114,7 @@ class Book
     }
 
     /**
-     * @return BookExemplar
+     * @return BookExemplar[]|ArrayCollection|array
      */
     public function getBookExemplars()
     {

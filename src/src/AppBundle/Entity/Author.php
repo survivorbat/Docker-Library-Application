@@ -13,7 +13,7 @@ class Author
     private $id = '';
     /** @var string $name */
     private $name = '';
-    /** @var Book[]|array $books */
+    /** @var Book[]|ArrayCollection|array $books */
     private $books;
 
     /**
