@@ -17,3 +17,8 @@ app_book_update:
   path: /{book}/update
   defaults:
     _controller: AppBundle:Book:update
+
+app_book_delete:
+  path: /{book}/delete
+  defaults:
+    _controller: AppBundle:Book:delete

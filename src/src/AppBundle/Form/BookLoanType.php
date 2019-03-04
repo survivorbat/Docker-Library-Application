@@ -2,23 +2,17 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Author;
-use AppBundle\Entity\Book;
 use AppBundle\Entity\BookExemplar;
 use AppBundle\Entity\BookLoan;
-use AppBundle\Entity\Genre;
 use AppBundle\Entity\Member;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BookLoanType extends FormType
+class BookLoanType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -38,11 +32,13 @@ class BookLoanType extends FormType
             ])
             ->add('bookExemplar', EntityType::class, [
                 'label' => 'Boek exemplaar',
-                'class' => BookExemplar::class
+                'class' => BookExemplar::class,
+                'choice_label' => 'id'
             ])
             ->add('member', EntityType::class, [
                 'label' => 'Lid',
-                'class' => Member::class
+                'class' => Member::class,
+                'choice_label' => 'name'
             ])
         ;
     }

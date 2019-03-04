@@ -17,3 +17,8 @@ app_member_update:
   path: /{member}/update
   defaults:
     _controller: AppBundle:Member:update
+
+app_member_delete:
+  path: /{member}/delete
+  defaults:
+    _controller: AppBundle:Member:delete

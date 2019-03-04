@@ -6,6 +6,7 @@
             <div class="card bg-light">
                 <div class="card-body">
                     <h2 class="card-title">Algemeen dashboard</h2>
+                    <p>Bekijk hier wat je allemaal gemist hebt</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -51,7 +52,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Nieuwe medewerkers</h3>
+                        <h3 class="card-title">Medewerkers</h3>
                         <ul class="list-group">
                             {% for employee in employees | slice(0, 5) %}
                                 <li class="list-group-item d-flex w-100 justify-content-between">
@@ -68,6 +69,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        <br>
                         <a href="{{ path('app_book_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                         <a href="{{ path('app_book_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                     </div>
@@ -77,7 +79,7 @@
         <div class="col-md-2 well">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente boeken</h3>
+                    <h3 class="card-title">Boeken</h3>
                     <ul class="list-group">
                         {% for book in books | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
@@ -94,13 +96,14 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <br>
                     <a href="{{ path('app_book_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                     <a href="{{ path('app_book_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente Exemplaren</h3>
+                    <h3 class="card-title">Exemplaren</h3>
                     <ul class="list-group">
                         {% for bookExemplar in bookExemplars | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
@@ -117,6 +120,7 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <br>
                     <a href="{{ path('app_bookExemplar_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                     <a href="{{ path('app_bookExemplar_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
@@ -125,7 +129,7 @@
         <div class="col-md-2">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente auteurs</h3>
+                    <h3 class="card-title">Auteurs</h3>
                     <ul class="list-group">
                         {% for author in authors | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
@@ -142,13 +146,14 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <br>
                     <a href="{{ path('app_author_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                     <a href="{{ path('app_author_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente locaties</h3>
+                    <h3 class="card-title">Locaties</h3>
                     <ul class="list-group">
                         {% for location in locations | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
@@ -165,6 +170,7 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <br>
                     <a href="{{ path('app_location_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                     <a href="{{ path('app_location_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
@@ -173,7 +179,7 @@
         <div class="col-md-2">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente genres</h3>
+                    <h3 class="card-title">Genres</h3>
                     <ul class="list-group">
                         {% for genre in genres | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
@@ -190,13 +196,14 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <br>
                     <a href="{{ path('app_genre_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                     <a href="{{ path('app_genre_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>
             </div>
             <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Recente leden</h3>
+                    <h3 class="card-title">Leden</h3>
                     <ul class="list-group">
                         {% for member in members | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
@@ -213,6 +220,7 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <br>
                     <a href="{{ path('app_member_index') }}"><button class="btn btn-primary">Overzicht</button></a>
                     <a href="{{ path('app_member_create') }}"><button class="btn btn-success">Aanmaken</button></a>
                 </div>

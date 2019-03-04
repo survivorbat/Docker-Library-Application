@@ -3,8 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <title>
-            {% block title %}{% endblock %}
+            {% block title %}Library Management Application{% endblock %}
         </title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -17,9 +24,13 @@
         {% block body %}
             <div class="container-fluid">
                 {% block header %}
-                    <header class="row">
-                        <div class="col-12">
-                            <h1>De bieb <small>management systeem</small></h1>
+                    <header class="row justify-content-center">
+                        <div class="col-md-4 text-center">
+                            <div class="card borderless">
+                                <div class="card-body">
+                                    <h1>De bieb <small>management systeem</small></h1>
+                                </div>
+                            </div>
                         </div>
                     </header>
                 {% endblock %}
@@ -44,7 +55,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-            <script defer src="https://use.fontaw esome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+            <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
             <script src="/assets/js/index.js"></script>
         {% endblock %}
     </body>

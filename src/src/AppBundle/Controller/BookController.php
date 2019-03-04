@@ -89,7 +89,7 @@ class BookController extends Controller
         }
 
         return $this->render('@App/book/form.html.twig', [
-            'form' => $form
+            'form' => $form->createView()
         ]);
     }
 

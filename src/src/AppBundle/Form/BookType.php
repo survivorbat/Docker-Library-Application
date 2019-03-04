@@ -6,14 +6,13 @@ use AppBundle\Entity\Author;
 use AppBundle\Entity\Book;
 use AppBundle\Entity\Genre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BookType extends FormType
+class BookType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -30,12 +29,14 @@ class BookType extends FormType
             ])
             ->add('author', EntityType::class, [
                 'label' => 'Auteur',
-                'class' => Author::class
+                'class' => Author::class,
+                'choice_label' => 'name'
             ])
             ->add('genres', EntityType::class, [
                 'label' => 'Genre(s)',
                 'class' => Genre::class,
                 'multiple' => true,
+                'choice_label' => 'title',
                 'attr' => [
                     'class' => 'select2'
                 ]

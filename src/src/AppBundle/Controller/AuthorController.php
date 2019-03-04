@@ -89,7 +89,7 @@ class AuthorController extends Controller
         }
 
         return $this->render('@App/author/form.html.twig', [
-            'form' => $form
+            'form' => $form->createView()
         ]);
     }
 

@@ -9,14 +9,11 @@ use AppBundle\Entity\BookLoan;
 use AppBundle\Entity\Genre;
 use AppBundle\Entity\Location;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BookExemplarType extends FormType
+class BookExemplarType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,20 +24,24 @@ class BookExemplarType extends FormType
         $builder
             ->add('book', EntityType::class, [
                 'label' => 'Boek',
-                'class' => Book::class
+                'class' => Book::class,
+                'choice_label' => 'title'
             ])
             ->add('location', EntityType::class, [
                 'label' => 'Locatie',
-                'class' => Location::class
+                'class' => Location::class,
+                'choice_label' => 'name'
             ])
             ->add('currentLoan', EntityType::class, [
                 'label' => 'Huidige uitlening',
-                'class' => BookLoan::class
+                'class' => BookLoan::class,
+                'choice_label' => 'id'
             ])
             ->add('pastLoans', EntityType::class, [
                 'label' => 'Verleden uitleningen',
                 'class' => BookLoan::class,
-                'multiple' => true
+                'multiple' => true,
+                'choice_label' => 'id'
             ])
         ;
     }

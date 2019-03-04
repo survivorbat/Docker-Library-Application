@@ -7,15 +7,15 @@ use AppBundle\Entity\Book;
 use AppBundle\Entity\Genre;
 use AppBundle\Entity\Location;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LocationType extends FormType
+class LocationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -41,7 +41,8 @@ class LocationType extends FormType
             ])
             ->add('employees', EntityType::class, [
                 'label' => 'Medewerkers',
-                'multiple' => true
+                'multiple' => true,
+                'choice_label' => 'name'
             ])
         ;
     }

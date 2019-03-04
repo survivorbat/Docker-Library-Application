@@ -17,3 +17,8 @@ app_location_update:
   path: /{location}/update
   defaults:
     _controller: AppBundle:Location:update
+
+app_location_delete:
+  path: /{location}/delete
+  defaults:
+    _controller: AppBundle:Location:delete

@@ -17,3 +17,8 @@ app_genre_update:
   path: /{genre}/update
   defaults:
     _controller: AppBundle:Genre:update
+
+app_genre_delete:
+  path: /{genre}/delete
+  defaults:
+    _controller: AppBundle:Genre:delete

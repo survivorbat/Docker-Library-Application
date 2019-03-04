@@ -17,3 +17,8 @@ app_author_update:
   path: /{author}/update
   defaults:
     _controller: AppBundle:Author:update
+
+app_author_delete:
+  path: /{author}/delete
+  defaults:
+    _controller: AppBundle:Author:delete

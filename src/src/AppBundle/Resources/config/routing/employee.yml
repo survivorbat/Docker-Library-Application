@@ -17,3 +17,8 @@ app_employee_update:
   path: /{employee}/update
   defaults:
     _controller: AppBundle:Employee:update
+
+app_employee_delete:
+  path: /{employee}/delete
+  defaults:
+    _controller: AppBundle:Employee:delete

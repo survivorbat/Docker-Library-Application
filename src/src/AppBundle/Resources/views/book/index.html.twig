@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">Boeken</h3>
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Titel</th>
@@ -34,10 +34,14 @@
                                         {{- book.author.name -}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary">Aanpassen</button>
+                                        <a href="{{ path('app_book_update', { book: book.id }) }}">
+                                            <button class="btn btn-primary">Aanpassen</button>
+                                        </a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger">Verwijderen</button>
+                                        <a href="{{ path('app_book_delete', { book: book.id }) }}">
+                                            <button class="btn btn-danger">Verwijderen</button>
+                                        </a>
                                     </td>
                                 </tr>
                             {% else %}
