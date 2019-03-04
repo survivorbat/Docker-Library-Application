@@ -46,6 +46,8 @@ symfony.fixtures.load:
 
 prod.up:
 	docker-compose -f docker/docker-compose.yml -p libraryapp up -d --scale php=4
+	make composer.install
+	make symfony.ready
 
 prod.down:
 	docker-compose -f docker/docker-compose.yml -p libraryapp down

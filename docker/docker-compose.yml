@@ -19,8 +19,6 @@ services:
   php:
     build:
       context: php
-# TODO: Add local mounts to dev compose and keep normal volumes here
-
     volumes:
       - app:/srv/html
     working_dir: /srv/html
