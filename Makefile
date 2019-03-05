@@ -1,5 +1,5 @@
 dev.up:
-	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml -p libraryapp up -d
+	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml -p libraryapp up -d --scale php=2
 
 dev.down:
 	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml -p libraryapp down
