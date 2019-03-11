@@ -3,34 +3,26 @@
 {% block container %}
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Boeken</h3>
+                    <h3 class="card-title">Locaties</h3>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Naam</th>
-                                <th>Boeken</th>
+                                <th>Adres</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for author in authors %}
+                            {% for location in locations %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('app_author_view', { author: author.id }) }}">{{- author.name -}}</a>
+                                        <a href="{{ path('app_location_view', { location: location.id }) }}">{{- location.name -}}</a>
                                     </td>
                                     <td>
-                                        <ul>
-                                            {% for key, book in author.books %}
-                                            <li>
-                                                <a href="{{ path('app_book_view', { book: book.id}) }}">{{- book.title -}}</a>
-                                            </li>
-                                            {% else %}
-                                                <span class="text-muted">Geen</span>
-                                            {% endfor %}
-                                        </ul>
+                                        {{- location.address -}}
                                     </td>
                                     <td>
                                         <button class="btn btn-primary">Aanpassen</button>
@@ -41,8 +33,8 @@
                                 </tr>
                             {% else %}
                                 <tr>
-                                    <td colspan="5">
-                                        Geen boeken gevonden
+                                    <td colspan="4">
+                                        Geen
                                     </td>
                                 </tr>
                             {% endfor %}

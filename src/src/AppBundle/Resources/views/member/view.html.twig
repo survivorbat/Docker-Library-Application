@@ -5,18 +5,27 @@
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">{{- author.name -}}</h2>
+                    <h2 class="card-title">{{- member.name -}}</h2>
+                    <p>
+                        Komt voornamelijk bij locatie
+                        <strong>
+                            <a href="{{ path('app_location_view', { location: member.primaryLocation.id}) }}">
+                                {{ member.primaryLocation.name }}
+                            </a>
+                        </strong>
+                        en heeft in totaal <strong>{{ member.bookLoans | length }}</strong> uitleningen.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">Boeken</h2>
+                    <h2 class="card-title">Uitleningen</h2>
                     <ul class="list-group">
-                        {% for book in author.books %}
+                        {% for bookLoan in member.bookLoans %}
                             <li class="list-group-item">
-                                <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
+                                <a href="{{ path('app_bookLoan_view', { bookLoan: bookLoan.id }) }}">{{- bookLoan.bookExemplar.book.title -}}</a>
                             </li>
                         {% else %}
                             <li class="text-muted list-group-item">Geen</li>

@@ -36,7 +36,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            {{- bookLoan.startDate | date("d-m-Y") -}}
+                                            {{- bookLoan.startDate | date('d-m-Y') -}}
                                         </td>
                                     </tr>
                                 {% else %}
@@ -57,11 +57,16 @@
                     <ul class="list-group">
                         {% for employee in employees | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
-                                <a href="{{- path('app_employee_view', { employee: employee.id }) -}}">
-                                    {{- employee.fullName-}}
-                                </a>
+                                <span>
+                                    <a href="{{- path('app_employee_view', { employee: employee.id }) -}}">
+                                        {{- employee.fullName }}
+                                    </a>
+                                    <a href="{{ path('app_location_view', { location: employee.location.id}) }}">
+                                        <small>{{ employee.location.name -}}</small>
+                                    </a>
+                                </span>
                                 <small class="text-muted">
-                                    {{- employee.createdAt | date("d-m-Y") -}}
+                                    {{- employee.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}
@@ -87,7 +92,7 @@
                                     {{- book.title -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{- book.createdAt | date("d-m-Y") -}}
+                                    {{- book.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}
@@ -111,7 +116,7 @@
                                     #{{- bookExemplar.exemplarNumber -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{- bookExemplar.createdAt | date("d-m-Y") -}}
+                                    {{- bookExemplar.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}
@@ -137,7 +142,7 @@
                                     {{- author.name -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{- author.createdAt | date("d-m-Y") -}}
+                                    {{- author.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}
@@ -161,7 +166,7 @@
                                     {{- location.name -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{- location.createdAt | date("d-m-Y") -}}
+                                    {{- location.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}
@@ -187,7 +192,7 @@
                                     {{- genre.title -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{- genre.createdAt | date("d-m-Y") -}}
+                                    {{- genre.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}
@@ -208,10 +213,10 @@
                         {% for member in members | slice(0, 5) %}
                             <li class="list-group-item d-flex w-100 justify-content-between">
                                 <a href="{{ path('app_member_view', { member: member.id}) }}">
-                                    {{- member.name -}} <small>{{ member.primaryLocation.name -}}</small>
+                                    {{- member.name -}}
                                 </a>
                                 <small class="text-muted">
-                                    {{- member.createdAt | date("d-m-Y") -}}
+                                    {{- member.createdAt | date('d-m-Y') -}}
                                 </small>
                             </li>
                         {% else %}

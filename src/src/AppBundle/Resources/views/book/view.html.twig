@@ -2,13 +2,23 @@
 
 {% block container %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="card bg-light">
                 <div class="card-body">
                     <h2 class="card-title">{{- book.title -}}</h2>
                     <p>
                         {{- book.description -}}
                     </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title">Exemplaren</h2>
+                    {% for bookExemplar in book.bookExemplars %}
+                        <a href="{{ path('app_bookExemplar_view', { bookExemplar: bookExemplar.id }) }}">#{{- bookExemplar.exemplarNumber -}}</a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

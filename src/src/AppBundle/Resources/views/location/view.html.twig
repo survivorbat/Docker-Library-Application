@@ -2,21 +2,60 @@
 
 {% block container %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">{{- author.name -}}</h2>
+                    <h2 class="card-title">{{- location.name -}}</h2>
+                    <p>{{- location.city ~ ', ' ~ location.address }} <small>{{ location.postalCode -}}</small></p>
+                    <p>
+                        Deze locatie is open sinds <strong>{{ location.openingDate | date('d-m-Y') }}</strong>,
+                        bevat <strong>{{ location.bookExemplars | length }}</strong> exemplaren, heeft momenteel
+                        <strong>{{ location.employees | length }}</strong> mensen in dienst en ziet wekelijks
+                        <strong>{{ location.members | length }}</strong> leden.
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">Boeken</h2>
+                    <h2 class="card-title">Medewerkers</h2>
                     <ul class="list-group">
-                        {% for book in author.books %}
+                        {% for employee in location.employees %}
                             <li class="list-group-item">
-                                <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
+                                <a href="{{ path('app_employee_view', { employee: employee.id }) }}">{{- employee.fullName -}}</a>
+                            </li>
+                        {% else %}
+                            <li class="text-muted list-group-item">Geen</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title">Leden</h2>
+                    <ul class="list-group">
+                        {% for member in location.members %}
+                            <li class="list-group-item">
+                                <a href="{{ path('app_member_view', { member: member.id }) }}">{{- member.name -}}</a>
+                            </li>
+                        {% else %}
+                            <li class="text-muted list-group-item">Geen</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title">Heeft exemplaren van</h2>
+                    <ul class="list-group">
+                        {% for bookExemplar in location.bookExemplars %}
+                            <li class="list-group-item">
+                                <a href="{{ path('app_bookExemplar_view', { bookExemplar: bookExemplar.id }) }}">{{- bookExemplar.book.title -}}</a>
                             </li>
                         {% else %}
                             <li class="text-muted list-group-item">Geen</li>

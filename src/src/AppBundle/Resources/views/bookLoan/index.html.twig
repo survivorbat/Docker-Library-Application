@@ -3,34 +3,38 @@
 {% block container %}
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Boeken</h3>
+                    <h3 class="card-title">Uitleningen</h3>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Naam</th>
-                                <th>Boeken</th>
+                                <th>Exemplaar</th>
+                                <th>Boek</th>
+                                <th>Lid</th>
+                                <th>Startdatum</th>
+                                <th>Terugbrengdatum</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for author in authors %}
+                            {% for bookLoan in bookLoans %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('app_author_view', { author: author.id }) }}">{{- author.name -}}</a>
+                                        <a href="{{ path('app_bookLoan_view', { bookLoan: bookLoan.id }) }}">#{{- bookLoan.bookExemplar.exemplarNumber -}}</a>
                                     </td>
                                     <td>
-                                        <ul>
-                                            {% for key, book in author.books %}
-                                            <li>
-                                                <a href="{{ path('app_book_view', { book: book.id}) }}">{{- book.title -}}</a>
-                                            </li>
-                                            {% else %}
-                                                <span class="text-muted">Geen</span>
-                                            {% endfor %}
-                                        </ul>
+                                        <a href="{{ path('app_book_view', { book: bookLoan.bookExemplar.book.id }) }}">{{- bookLoan.bookExemplar.book.title -}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('app_member_view', { member: bookLoan.member.id }) }}">{{- bookLoan.member.name -}}</a>
+                                    </td>
+                                    <td>
+                                        {{- bookLoan.startDate | date('d-m-Y') -}}
+                                    </td>
+                                    <td>
+                                        {{- bookLoan.dueDate | date('d-m-Y') -}}
                                     </td>
                                     <td>
                                         <button class="btn btn-primary">Aanpassen</button>
@@ -41,7 +45,7 @@
                                 </tr>
                             {% else %}
                                 <tr>
-                                    <td colspan="5">
+                                    <td colspan="7">
                                         Geen boeken gevonden
                                     </td>
                                 </tr>

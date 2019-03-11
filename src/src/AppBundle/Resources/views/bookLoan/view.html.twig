@@ -5,23 +5,35 @@
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">{{- author.name -}}</h2>
+                    <h2 class="card-title">Uitlening van {{ bookLoan.startDate | date('d-m-Y') }}</h2>
+                    <p>
+                        Het boek <a href="{{ path('app_book_view', { book: bookLoan.bookExemplar.book.id}) }}">{{ bookLoan.bookExemplar.book.title }}</a>
+                        met exemplaarnummer <a href="{{ path('app_bookExemplar_view', { bookExemplar: bookLoan.bookExemplar.id}) }}">{{ bookLoan.bookExemplar.exemplarNumber }}</a>
+                        is uitgeleend aan lid <a href="{{ path('app_member_view', { member: bookLoan.member.id }) }}">{{ bookLoan.member.name }}</a>.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">Boeken</h2>
-                    <ul class="list-group">
-                        {% for book in author.books %}
-                            <li class="list-group-item">
-                                <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
-                            </li>
-                        {% else %}
-                            <li class="text-muted list-group-item">Geen</li>
-                        {% endfor %}
-                    </ul>
+                    <h2 class="card-title">Details</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>StartDatum</th>
+                            <td>{{- bookLoan.startDate | date('d-m-Y') -}}</td>
+                        </tr>
+                        <tr>
+                            <th>EindDatum</th>
+                            <td>{{- bookLoan.dueDate | date('d-m-Y') -}}</td>
+                        </tr>
+                        <tr>
+                            <th>Boete</th>
+                            <td>€{{- bookLoan.pastDueFine -}}</td>
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>

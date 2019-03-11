@@ -5,21 +5,23 @@
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">{{- author.name -}}</h2>
+                    <h2 class="card-title">Exemplaar {{ bookExemplar.exemplarNumber -}}</h2>
+                    Dit is een exemplaar van het boek <a href="{{ path('app_book_view', { book: bookExemplar.book.id }) }}">{{ bookExemplar.book.title }}</a>
+                    en is aanwezig op locatie <a href="{{ path('app_location_view', { location: bookExemplar.location.id }) }}">{{ bookExemplar.location.name }}</a>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">Boeken</h2>
+                    <h2 class="card-title">Uitleningen</h2>
                     <ul class="list-group">
-                        {% for book in author.books %}
+                        {% for bookLoan in bookExemplar.loans %}
                             <li class="list-group-item">
-                                <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
+                                <a href="{{ path('app_bookLoan_view', { bookLoan: bookLoan.id }) }}">Aan {{- bookLoan.member.name-}}</a>
                             </li>
                         {% else %}
-                            <li class="text-muted list-group-item">Geen</li>
+                            <li class="list-group-item text-muted">Geen</li>
                         {% endfor %}
                     </ul>
                 </div>

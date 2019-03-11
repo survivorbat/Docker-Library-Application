@@ -5,7 +5,8 @@
         <div class="col-md-6">
             <div class="card bg-light">
                 <div class="card-body">
-                    <h2 class="card-title">{{- author.name -}}</h2>
+                    <h2 class="card-title">{{- genre.title-}}</h2>
+                    <p>{{- genre.description -}}</p>
                 </div>
             </div>
         </div>
@@ -14,7 +15,7 @@
                 <div class="card-body">
                     <h2 class="card-title">Boeken</h2>
                     <ul class="list-group">
-                        {% for book in author.books %}
+                        {% for book in genre.belongsToBooks %}
                             <li class="list-group-item">
                                 <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
                             </li>

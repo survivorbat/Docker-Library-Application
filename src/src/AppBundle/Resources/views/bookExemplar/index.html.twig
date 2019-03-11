@@ -3,34 +3,30 @@
 {% block container %}
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card bg-light">
                 <div class="card-body">
-                    <h3 class="card-title">Boeken</h3>
+                    <h3 class="card-title">Boek Exemplaren</h3>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Naam</th>
-                                <th>Boeken</th>
+                                <th>Nummer</th>
+                                <th>Boek</th>
+                                <th>Aantal uitleningen</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for author in authors %}
+                            {% for bookExemplar in bookExemplars %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('app_author_view', { author: author.id }) }}">{{- author.name -}}</a>
+                                        <a href="{{ path('app_bookExemplar_view', { bookExemplar: bookExemplar.id }) }}">{{- bookExemplar.exemplarNumber -}}</a>
                                     </td>
                                     <td>
-                                        <ul>
-                                            {% for key, book in author.books %}
-                                            <li>
-                                                <a href="{{ path('app_book_view', { book: book.id}) }}">{{- book.title -}}</a>
-                                            </li>
-                                            {% else %}
-                                                <span class="text-muted">Geen</span>
-                                            {% endfor %}
-                                        </ul>
+                                        <a href="{{ path('app_book_view', { book: bookExemplar.book.id}) }}">{{- bookExemplar.book.title -}}</a>
+                                    </td>
+                                    <td>
+                                        {{- bookExemplar.location | length -}}
                                     </td>
                                     <td>
                                         <button class="btn btn-primary">Aanpassen</button>

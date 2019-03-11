@@ -58,7 +58,7 @@ class BookExemplar
      * @param BookLoan $bookLoan
      * @return BookExemplar
      */
-    public function addPastLoan(BookLoan $bookLoan): BookExemplar
+    public function addLoan(BookLoan $bookLoan): BookExemplar
     {
         $this->loans[] = $bookLoan;
         return $this;
@@ -68,7 +68,7 @@ class BookExemplar
      * @param BookLoan $bookLoan
      * @return BookExemplar
      */
-    public function removePastLoan(BookLoan $bookLoan): BookExemplar
+    public function removeLoan(BookLoan $bookLoan): BookExemplar
     {
         $this->loans = array_filter($this->loans, function (BookLoan $bookLoanInList) use ($bookLoan) {
             return $bookLoan !== $bookLoanInList;
@@ -79,7 +79,7 @@ class BookExemplar
     /**
      * @return BookLoan[]|array
      */
-    public function getPastLoans()
+    public function getLoans()
     {
         return $this->loans;
     }
@@ -88,7 +88,7 @@ class BookExemplar
      * @param BookLoan[]|array $loans
      * @return BookExemplar
      */
-    public function setPastLoans($loans)
+    public function setLoans($loans)
     {
         $this->loans = $loans;
         return $this;
