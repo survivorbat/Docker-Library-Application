@@ -25,23 +25,27 @@ class BookExemplarType extends AbstractType
             ->add('book', EntityType::class, [
                 'label' => 'Boek',
                 'class' => Book::class,
-                'choice_label' => 'title'
+                'choice_label' => 'title',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
             ->add('location', EntityType::class, [
                 'label' => 'Locatie',
                 'class' => Location::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
-            ->add('currentLoan', EntityType::class, [
-                'label' => 'Huidige uitlening',
-                'class' => BookLoan::class,
-                'choice_label' => 'id'
-            ])
-            ->add('pastLoans', EntityType::class, [
+            ->add('loan', EntityType::class, [
                 'label' => 'Verleden uitleningen',
                 'class' => BookLoan::class,
                 'multiple' => true,
-                'choice_label' => 'id'
+                'choice_label' => 'exemplarNumber',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
         ;
     }

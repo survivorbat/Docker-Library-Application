@@ -1,3 +1,7 @@
+default:
+	@echo You need to specify a target!
+	@exit
+
 dev.up:
 	docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml -p libraryapp up -d --scale php=2
 

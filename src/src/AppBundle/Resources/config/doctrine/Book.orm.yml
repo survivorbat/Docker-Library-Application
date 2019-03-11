@@ -38,3 +38,4 @@ AppBundle\Entity\Book:
     bookExemplars:
       targetEntity: AppBundle\Entity\BookExemplar
       mappedBy: book
+      cascade: [PERSIST, REMOVE]

@@ -14,7 +14,7 @@ use Faker\Generator;
 
 class LoadLoanData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 200;
+    const AMOUNT = 100;
 
     /** @var Generator $faker */
     private $faker;

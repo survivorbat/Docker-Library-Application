@@ -42,7 +42,10 @@ class LocationType extends AbstractType
             ->add('employees', EntityType::class, [
                 'label' => 'Medewerkers',
                 'multiple' => true,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
         ;
     }

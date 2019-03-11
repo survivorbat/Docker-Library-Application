@@ -16,7 +16,7 @@ use Faker\Generator;
 
 class LoadMemberData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 30;
+    const AMOUNT = 40;
 
     /** @var Generator $faker */
     private $faker;

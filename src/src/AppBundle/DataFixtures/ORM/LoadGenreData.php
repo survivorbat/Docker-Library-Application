@@ -14,7 +14,20 @@ use Faker\Generator;
 
 class LoadGenreData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 6;
+    const GENRES = [
+        'Horror',
+        'Comedie',
+        'Romantiek',
+        'Misdaad',
+        'Actie',
+        'Paranormaal',
+        'Pornografie',
+        'Superhelden',
+        'Kinderen',
+        'Animatie',
+        'Holebi',
+    ];
+    const AMOUNT = 10;
 
     /** @var Generator $faker */
     private $faker;
@@ -35,7 +48,7 @@ class LoadGenreData extends AbstractFixture implements OrderedFixtureInterface, 
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
-            $genre = (new Genre())->setTitle($this->faker->word)
+            $genre = (new Genre())->setTitle(self::GENRES[$i])
                 ->setDescription($this->faker->realText(200));
 
             $this->setReference('genre_' . $i, $genre);

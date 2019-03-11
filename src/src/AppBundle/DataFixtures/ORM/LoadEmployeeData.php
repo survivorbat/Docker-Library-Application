@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 
 class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 30;
+    const AMOUNT = 15;
 
     /** @var Generator $faker */
     private $faker;

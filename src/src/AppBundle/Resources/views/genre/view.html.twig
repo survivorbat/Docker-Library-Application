@@ -1,0 +1,29 @@
+{% extends '@App/base.html.twig' %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title">{{- author.name -}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title">Boeken</h2>
+                    <ul class="list-group">
+                        {% for book in author.books %}
+                            <li class="list-group-item">
+                                <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
+                            </li>
+                        {% else %}
+                            <li class="text-muted list-group-item">Geen</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

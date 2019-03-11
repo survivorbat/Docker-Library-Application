@@ -14,7 +14,25 @@ use Faker\Generator;
 
 class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 30;
+    const AMOUNT = 15;
+    const TITLES = [
+        'Het zwaard van Damocles',
+        'Beste Vriend',
+        'Echt Sexy',
+        'Boy 7',
+        'Het verraad van Fortuin',
+        'Donald Duck - #77',
+        'Anne Frank',
+        'Het huis Anubis',
+        'Het geheim van de schatkist',
+        'Doctor Who - Het laatste hoofdstuk',
+        'Het kruis van de tempeliers',
+        'Het meisje met de groene ogen',
+        'Fifty shades of grey',
+        'Computerhandboek, derde editie',
+        'Mijn vader en zij',
+        'De vlucht',
+    ];
 
     /** @var Generator $faker */
     private $faker;
@@ -39,7 +57,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, O
             /** @var Author $author */
             $author = $this->getReference('author_' . random_int(0, LoadAuthorData::AMOUNT));
 
-            $book = (new Book())->setTitle($this->faker->realText(20))
+            $book = (new Book())->setTitle(self::TITLES[$i])
                 ->setDescription($this->faker->realText(300))
                 ->setAuthor($author)
                 ->setGenres($this->getRandomAmountOfGenres(3));

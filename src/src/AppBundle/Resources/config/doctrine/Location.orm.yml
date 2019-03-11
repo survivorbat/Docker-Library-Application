@@ -34,9 +34,12 @@ AppBundle\Entity\Location:
       targetEntity: AppBundle\Entity\BookExemplar
       mappedBy: location
       inversedBy: location
+      cascade: [REMOVE, PERSIST]
     employees:
       targetEntity: AppBundle\Entity\Employee
       mappedBy: location
+      cascade: [REMOVE, PERSIST]
     members:
       targetEntity: AppBundle\Entity\Member
       mappedBy: primaryLocation
+      cascade: [REMOVE, PERSIST]

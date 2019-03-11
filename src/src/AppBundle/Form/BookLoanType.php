@@ -33,12 +33,18 @@ class BookLoanType extends AbstractType
             ->add('bookExemplar', EntityType::class, [
                 'label' => 'Boek exemplaar',
                 'class' => BookExemplar::class,
-                'choice_label' => 'id'
+                'choice_label' => 'exemplarNumber',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
             ->add('member', EntityType::class, [
                 'label' => 'Lid',
                 'class' => Member::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
         ;
     }

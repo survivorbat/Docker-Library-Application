@@ -5,32 +5,28 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Boeken</h3>
+                    <h3 class="card-title">Leden</h3>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Naam</th>
-                                <th>Boeken</th>
+                                <th>Locatie</th>
+                                <th>Uitleningen</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for author in authors %}
+                            {% for member in members %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('app_author_view', { author: author.id }) }}">{{- author.name -}}</a>
+                                        <a href="{{ path('app_member_view', { member: member.id }) }}">{{- member.name -}}</a>
                                     </td>
                                     <td>
-                                        <ul>
-                                            {% for key, book in author.books %}
-                                            <li>
-                                                <a href="{{ path('app_book_view', { book: book.id}) }}">{{- book.title -}}</a>
-                                            </li>
-                                            {% else %}
-                                                <span class="text-muted">Geen</span>
-                                            {% endfor %}
-                                        </ul>
+                                        <a href="{{ path('app_location_view', { location: member.primaryLocation.id}) }}">{{- member.primaryLocation.name -}}</a>
+                                    </td>
+                                    <td>
+                                        {{- member.bookLoans | length -}}
                                     </td>
                                     <td>
                                         <button class="btn btn-primary">Aanpassen</button>
@@ -42,7 +38,7 @@
                             {% else %}
                                 <tr>
                                     <td colspan="5">
-                                        Geen boeken gevonden
+                                        Geen leden gevonden
                                     </td>
                                 </tr>
                             {% endfor %}

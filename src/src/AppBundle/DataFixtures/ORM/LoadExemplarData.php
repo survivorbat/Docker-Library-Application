@@ -14,7 +14,7 @@ use Faker\Generator;
 
 class LoadExemplarData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
-    const AMOUNT = 100;
+    const AMOUNT = 40;
 
     /** @var Generator $faker */
     private $faker;
@@ -43,7 +43,7 @@ class LoadExemplarData extends AbstractFixture implements OrderedFixtureInterfac
 
             $bookExemplar = (new BookExemplar())->setBook($book)
                 ->setLocation($location)
-                ->setExemplarNumber($i);
+                ->setExemplarNumber($this->faker->numberBetween(0, 60000));
 
             $this->setReference('bookExemplar_' . $i, $bookExemplar);
 

@@ -16,6 +16,7 @@ use Faker\Generator;
 class LoadLocationData extends AbstractFixture implements OrderedFixtureInterface, ORMFixtureInterface
 {
     const AMOUNT = 3;
+    const LOCATIONS = ['Breda', 'Den Bosch', 'Rotterdam', 'Eindhoven'];
 
     /** @var Generator $faker */
     private $faker;
@@ -37,7 +38,7 @@ class LoadLocationData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < self::AMOUNT + 1; $i++) {
-            $location = (new Location())->setName($this->faker->word)
+            $location = (new Location())->setName(self::LOCATIONS[$i])
                 ->setAddress($this->faker->address)
                 ->setCity($this->faker->city)
                 ->setOpeningDate($this->faker->dateTimeBetween('-10 years', '-1 years'))

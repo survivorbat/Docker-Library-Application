@@ -29,7 +29,8 @@ AppBundle\Entity\BookLoan:
     bookExemplar:
       targetEntity: AppBundle\Entity\BookExemplar
       mappedBy: book
-      inversedBy: pastLoans
+      inversedBy: loans
     member:
       targetEntity: AppBundle\Entity\Member
-      mappedBy: bookLoans
+      mappedBy: member
+      inversedBy: bookLoans

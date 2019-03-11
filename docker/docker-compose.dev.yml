@@ -5,6 +5,7 @@ services:
     volumes:
       - ./webserver/sites-enabled:/etc/nginx/sites-enabled
       - ../src:/srv/html
+      - ../logs/nginx:/var/log/nginx
   database:
     ports:
       - "3306:3306"

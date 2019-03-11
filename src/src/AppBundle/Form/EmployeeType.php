@@ -41,7 +41,10 @@ class EmployeeType extends AbstractType
             ->add('location', EntityType::class, [
                 'label' => 'Locatie',
                 'class' => Employee::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'select2'
+                ],
             ])
         ;
     }

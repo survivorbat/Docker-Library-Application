@@ -15,10 +15,8 @@ class BookExemplar
     private $exemplarNumber = 0;
     /** @var Book|null $book */
     private $book;
-    /** @var BookLoan[]|ArrayCollection|array $pastLoans */
-    private $pastLoans;
-    /** @var BookLoan|null $currentLoan */
-    private $currentLoan;
+    /** @var BookLoan[]|ArrayCollection|array $loans */
+    private $loans;
     /** @var Location|null $location */
     private $location;
 
@@ -27,7 +25,7 @@ class BookExemplar
      */
     public function __construct()
     {
-        $this->pastLoans = new ArrayCollection();
+        $this->loans = new ArrayCollection();
     }
 
     /**
@@ -62,7 +60,7 @@ class BookExemplar
      */
     public function addPastLoan(BookLoan $bookLoan): BookExemplar
     {
-        $this->pastLoans[] = $bookLoan;
+        $this->loans[] = $bookLoan;
         return $this;
     }
 
@@ -72,7 +70,7 @@ class BookExemplar
      */
     public function removePastLoan(BookLoan $bookLoan): BookExemplar
     {
-        $this->pastLoans = array_filter($this->pastLoans, function (BookLoan $bookLoanInList) use ($bookLoan) {
+        $this->loans = array_filter($this->loans, function (BookLoan $bookLoanInList) use ($bookLoan) {
             return $bookLoan !== $bookLoanInList;
         });
         return $this;
@@ -83,34 +81,16 @@ class BookExemplar
      */
     public function getPastLoans()
     {
-        return $this->pastLoans;
+        return $this->loans;
     }
 
     /**
-     * @param BookLoan[]|array $pastLoans
+     * @param BookLoan[]|array $loans
      * @return BookExemplar
      */
-    public function setPastLoans($pastLoans)
+    public function setPastLoans($loans)
     {
-        $this->pastLoans = $pastLoans;
-        return $this;
-    }
-
-    /**
-     * @return BookLoan|null
-     */
-    public function getCurrentLoan(): ?BookLoan
-    {
-        return $this->currentLoan;
-    }
-
-    /**
-     * @param BookLoan|null $currentLoan
-     * @return BookExemplar
-     */
-    public function setCurrentLoan(?BookLoan $currentLoan): BookExemplar
-    {
-        $this->currentLoan = $currentLoan;
+        $this->loans = $loans;
         return $this;
     }
 

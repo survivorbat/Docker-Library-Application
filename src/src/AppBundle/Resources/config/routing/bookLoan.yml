@@ -1,0 +1,24 @@
+app_bookLoan_index:
+  path: /
+  defaults:
+    _controller: AppBundle:BookLoan:index
+
+app_bookLoan_create:
+  path: /new
+  defaults:
+    _controller: AppBundle:BookLoan:create
+
+app_bookLoan_view:
+  path: /{bookLoan}
+  defaults:
+    _controller: AppBundle:BookLoan:view
+
+app_bookLoan_update:
+  path: /{bookLoan}/update
+  defaults:
+    _controller: AppBundle:BookLoan:update
+
+app_bookLoan_delete:
+  path: /{bookLoan}/delete
+  defaults:
+    _controller: AppBundle:BookLoan:delete

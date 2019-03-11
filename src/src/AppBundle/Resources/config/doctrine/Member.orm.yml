@@ -23,9 +23,10 @@ AppBundle\Entity\Member:
           on: update
   oneToMany:
     bookLoans:
-      targetEntity: AppBundle\Entity\Member
-      mappedBy: bookLoans
-      inversedBy: bookLoans
+      targetEntity: AppBundle\Entity\BookLoan
+      mappedBy: member
+      inversedBy: member
+      cascade: [REMOVE, PERSIST]
   manyToOne:
     primaryLocation:
       targetEntity: AppBundle\Entity\Location

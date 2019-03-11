@@ -37,3 +37,7 @@ employee:
 member:
   prefix: /member
   resource: routing/member.yml
+
+bookLoan:
+  prefix: /bookLoan
+  resource: routing/bookLoan.yml

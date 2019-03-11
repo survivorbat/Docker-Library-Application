@@ -40,6 +40,7 @@ services:
     volumes:
       - app:/srv/html
       - ./webserver/sites-enabled/example.com.conf:/etc/nginx/sites-enabled/example.com.conf
+      - logs:/var/log/nginx
     working_dir: /srv/html
     restart: always
     ports:
