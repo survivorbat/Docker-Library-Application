@@ -16,13 +16,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for author in authors %}
+                            {% for genre in genres %}
                                 <tr>
                                     <td>
-                                        <a href="{{ path('app_author_view', { author: author.id }) }}">{{- author.name -}}</a>
+                                        <a href="{{ path('app_genre_view', { genre: genre.id }) }}">{{- genre.title -}}</a>
                                     </td>
                                     <td>
-                                        {{- author.books | length -}}
+                                        {{- genre.belongsToBooks | length -}}
                                     </td>
                                     <td>
                                         <button class="btn btn-primary">Aanpassen</button>

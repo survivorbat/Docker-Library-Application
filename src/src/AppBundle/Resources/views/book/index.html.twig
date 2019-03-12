@@ -23,15 +23,20 @@
                                         <a href="{{ path('app_book_view', { book: book.id }) }}">{{- book.title -}}</a>
                                     </td>
                                     <td>
+                                        {% set amountOfGenres = book.genres | length %}
                                         {% for key, genre in book.genres %}
-                                            {{- genre.title ~ ', ' -}}
+                                            <a href="{{ path('app_genre_view', {genre: genre.id}) }}">{{ genre.title }}</a>
+                                            {% if key + 1 < amountOfGenres %}
+                                                +
+                                            {% endif %}
                                         {% else %}
                                             <span class="text-muted">Geen</span>
                                         {% endfor %}
                                     </td>
                                     <td>
-                                        <a href=""></a>
-                                        {{- book.author.name -}}
+                                        <a href="{{ path('app_author_view', { author: book.author.id }) }}">
+                                            {{- book.author.name -}}
+                                        </a>
                                     </td>
                                     <td>
                                         <a href="{{ path('app_book_update', { book: book.id }) }}">
